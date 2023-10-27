@@ -1,0 +1,83 @@
+.app-written {
+  padding-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .written-dropdown {
+    font-family: Inter;
+    font-size: 12px;
+    --background: var(--burcger-background-color);
+    --border-radius: 4px;
+    width: 90vw;
+    --min-height: 32px;
+    position: relative;
+    border-radius: 4px; /* Apply border radius */
+    padding: 2.5px; /* Adjust padding as needed */
+    background: var(--burcger-linear-color); /* Apply linear gradient */
+    color: white; /* Text color */
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -4px; /* Adjust the negative top value to create a border effect */
+      right: -4px; /* Adjust the negative right value to create a border effect */
+      bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+      left: -4px; /* Adjust the negative left value to create a border effect */
+      border: 2px solid transparent; /* Set a transparent border */
+      border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+    }
+
+    .comment-info {
+      --min-height: 30px;
+      --background: var(--ion-background-color);
+      border-bottom: 1.5px solid var(--burcger-primary-orange);
+
+      .info {
+        margin: 0;
+      }
+    }
+
+    .zodiac-comment {
+      padding: 4px;
+      max-height: 34px;
+      background-color: var(--ion-background-color);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: Inter;
+    }
+
+    .zodiac-comment-expanded {
+      text-overflow: initial;
+      white-space: normal;
+      max-height: 100%;
+    }
+  }
+
+  .list-info {
+    padding: 0;
+
+    .zodiac-type {
+      border-block: 2px solid var(--burcger-primary-purple);
+      padding: 4px 0;
+      background-color: var(--ion-background-color);
+    }
+
+    .user-date {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 4px 0;
+      background-color: var(--ion-background-color);
+
+      .date-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+  }
+}

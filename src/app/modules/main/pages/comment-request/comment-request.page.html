@@ -1,0 +1,16 @@
+<ion-content class="app-cr ion-text-center">
+  <ion-toolbar>
+    <ion-segment>
+      <ion-segment-button (click)="navigateToPage('/main/comment-request')" checked>
+        <!-- <fa-icon aria-hidden="true" icon="pen-to-square"></fa-icon> -->
+      </ion-segment-button>
+      <ion-segment-button (click)="navigateToPage('/main/comment-request/written-comments')">
+        <!-- <fa-icon aria-hidden="true" icon="comment"></fa-icon> -->
+      </ion-segment-button>
+      <ion-segment-button (click)="navigateToPage('/main/comment-request/write-comment')">
+        <!-- <fa-icon aria-hidden="true" icon="pen"></fa-icon> -->
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>

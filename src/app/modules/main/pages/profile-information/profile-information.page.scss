@@ -1,0 +1,54 @@
+body {
+    font-family: "Roboto";
+}
+
+.forBackAndEdit{
+    margin-top: 10px;
+    font-size: 25px;
+    margin: 10px;
+}
+
+ion-icon {
+    color: white;
+    
+    &.photo-icon {
+        margin: auto;
+        display: block;
+        font-size: 72px;
+        margin-top: 19px;
+    }
+}
+
+.name {
+    display: flex;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 500;
+    line-height: 30px;
+    justify-content: center;
+}
+
+
+ion-list {
+    padding: 0;
+    background: none;
+    margin: 0 16px 23px 16px;
+    border-bottom: solid 1px #FD9843;
+    .input { --background: none; }
+}
+
+img {
+    width: 120px;
+    height: 120px;
+    border-radius: 999999px;
+}
+
+ion-col {
+    display: flex;
+    padding-top: 18px;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 18px;
+    flex-direction: column;
+}

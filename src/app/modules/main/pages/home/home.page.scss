@@ -1,0 +1,137 @@
+ion-content.app-home {
+  --padding-top: 60px;
+
+  .welcome-title {
+    font-family: Indie Flower;
+    font-size: 24px;
+  }
+
+  ion-item.user-welcome {
+    .user {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .user-profile {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        border-radius: 100%;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+
+        &:before {
+          padding: 4px;
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          border-radius: 100%; /* !importanté */
+          background: var(--burcger-linear-color);
+        }
+
+        .user-profile-photo {
+          width: 60px;
+          height: 60px;
+          border-radius: 100%;
+        }
+      }
+      .premium-icon {
+        display: flex;
+        position: absolute;
+        color: var(--burcger-primary-orange);
+        bottom: 0;
+        right: 54%;
+      }
+      .creator-icon {
+        display: flex;
+        position: absolute;
+        color: var(--burcger-primary-orange);
+        bottom: 0;
+        left: 50%;
+      }
+    }
+  }
+
+  .burcger-button {
+    margin-block: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .menuBtn {
+      font-family: Inter;
+      font-size: 12px;
+      --padding-end:0;
+      --padding-start:0;
+      --background: var(--burcger-background-color);
+      --border-radius: 4px;
+      width: 250px;
+      --min-height: 32px;
+      position: relative;
+      border-radius: 4px; /* Apply border radius */
+      padding: 2px; /* Adjust padding as needed */
+      background: var(--burcger-linear-color); /* Apply linear gradient */
+      color: white; /* Text color */
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -4px; /* Adjust the negative top value to create a border effect */
+        right: -4px; /* Adjust the negative right value to create a border effect */
+        bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+        left: -4px; /* Adjust the negative left value to create a border effect */
+        border: 2px solid transparent; /* Set a transparent border */
+        border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+      }
+      .notification-icon {
+        margin-left: 8px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .welcome-text {
+    padding-inline: 35px;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    font-size: 14px;
+  }
+  .comments {
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bolder;
+    font-family: Roboto;
+
+    .comment {
+      width: 115px;
+      height: 115px;
+      display: flex;
+      align-items: center;
+
+      &.daily {
+        background: linear-gradient(#52105c88, #52105c88),
+          url(/assets/gunluk.png);
+      }
+      &.weekly {
+        background: linear-gradient(#52105c88, #52105c88),
+          url(/assets/weekly.png);
+      }
+      &.yearly {
+        background: linear-gradient(#52105c88, #52105c88),
+          url(/assets/yearly.png);
+      }
+      &.monthly {
+        background: linear-gradient(#52105c88, #52105c88),
+          url(/assets/monthly.png);
+      }
+    }
+  }
+}

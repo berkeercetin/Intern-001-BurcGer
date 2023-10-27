@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true" class="header ion-no-border">
+    <ion-toolbar class="toolbar">
+      <ion-title class="title">Hoşgeldin Abuzer</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item button detail class="menuBtn">
+    <ion-icon color="white" name="notifications"></ion-icon>
+    Bildirim Gönder
+  </ion-item>
+  <ion-item button detail class="menuBtn">
+    <ion-icon color="white" name="card"></ion-icon>
+    Abone Gelirleri
+  </ion-item>
+  <ion-item button detail class="menuBtn">
+    <ion-icon color="white" name="person"></ion-icon>
+    Kullanıcılar ve Özellikleri</ion-item>
+  <ion-item button detail class="menuBtn">
+    <ion-icon color="white" name="happy"></ion-icon>
+    Geri Bildirimler
+  </ion-item>
+  <ion-item button detail class="menuBtn" routerLink="../comment-panel">
+    <ion-icon color="white" name="chatbubble"></ion-icon>
+    Yorum Ekle ve Düzenle
+  </ion-item>
+  <ion-item button detail class="menuBtn">
+    <ion-icon color="white" name="cog"></ion-icon>
+    Uygulama Değişiklikleri
+  </ion-item>
+
+  <ion-item button class="exitBtn">
+    <ion-icon color="white" name="exit"></ion-icon>
+    Admin Panelden Çıkış Yap
+  </ion-item>
+</ion-content>

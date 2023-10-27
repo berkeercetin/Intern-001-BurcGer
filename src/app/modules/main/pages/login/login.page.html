@@ -1,0 +1,18 @@
+<ion-content>
+  <div class="girisyapp">
+    <ion-label class="girisyapheader">Giriş Yap</ion-label>
+    <ion-item class="girisyap" lines="none" style="width: 100%; justify-content: center;">
+
+      <ion-input [(ngModel)]="email" class="input" type="email" placeholder="E-Mail"></ion-input>
+    </ion-item>
+    <ion-item class="girisyap" lines="none">
+
+      <ion-input [(ngModel)]="password" class="input" type="password" placeholder="Şifre"></ion-input>
+    </ion-item>
+    <ion-button (click)="logIn()" class="buton" color="#281A28">
+      <ion-label>Giriş Yap</ion-label>
+    </ion-button>
+    <ion-label style="color:#d9d9d9" class="girisyapyazi">HESABINIZ YOKSA <a style="color: #FD7E14; text-decoration: underline;" [routerLink]="['/main/register']">KAYIT OLMAK</a> İSTER MİSİNİZ?</ion-label>
+    <ion-label style="color:#FD7E14; text-decoration: underline;" [routerLink]="['/main/forgot-password']" class="girisyapyazi">PAROLAMI UNUTTUM</ion-label>
+  </div>
+</ion-content>

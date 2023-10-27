@@ -1,0 +1,66 @@
+<ion-content class="app-home ion-text-center">
+  <ion-title class="welcome-title ion-text-center">Hoşgeldin Mahmut</ion-title>
+  <ion-item
+    class="user-welcome"
+    color="var(--ion-background-color);"
+    lines="none"
+  >
+    <div class="user">
+      <div class="user-profile">
+        <img src="assets/berke.jpg" class="user-profile-photo" />
+      </div>
+      <!-- <fa-icon
+        class="premium-icon"
+        aria-hidden="true"
+        [icon]="['far', 'gem']"
+        size="lg"
+      ></fa-icon>
+      <fa-icon
+        class="creator-icon"
+        aria-hidden="true"
+        icon="book"
+        size="lg"
+      ></fa-icon> -->
+    </div>
+  </ion-item>
+
+  <div class="burcger-button">
+  <ion-item button detail class="menuBtn">
+    <!-- <fa-icon
+    class="notification-icon"
+    aria-hidden="true"
+    icon="bell"
+    size="lg"
+  ></fa-icon> -->
+  2 yeni yorumlama isteği
+  </ion-item>
+</div>
+
+  <ion-text class="welcome-text-box"
+    ><p class="welcome-text">
+      Güne başlamadan önce senin için yazdığımız burç yorumlarına bakmak ister
+      misin?
+    </p></ion-text
+  >
+
+  <ion-title size="large">Burç Yorumları</ion-title>
+
+  <ion-grid class="comments">
+    <ion-row class="ion-justify-content-around">
+      <ion-card class="daily comment">
+        <ion-col> Günlük Burç Yorumu </ion-col>
+      </ion-card>
+      <ion-card class="weekly comment">
+        <ion-col> Haftalık Burç Yorumu </ion-col>
+      </ion-card>
+    </ion-row>
+    <ion-row class="ion-justify-content-around">
+      <ion-card class="monthly comment">
+        <ion-col> Aylık Burç Yorumu </ion-col>
+      </ion-card>
+      <ion-card class="yearly comment">
+        <ion-col> Yıllık Burç Yorumu </ion-col>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>
