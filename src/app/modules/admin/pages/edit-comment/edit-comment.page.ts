@@ -3,8 +3,6 @@ import {
   Firestore, 
   query, 
   collection, 
-  collectionData, 
-  collectionSnapshots, 
   getDocs,
   doc, 
   updateDoc } from '@angular/fire/firestore';
