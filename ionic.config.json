@@ -1,0 +1,7 @@
+{
+  "name": "Intern-001-BurcGer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
