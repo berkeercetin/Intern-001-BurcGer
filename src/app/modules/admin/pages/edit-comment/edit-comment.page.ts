@@ -30,6 +30,7 @@ export class EditCommentPage implements OnInit {
     comment: new FormControl(''),
     zodiac: new FormControl('')
   })
+  
   constructor(private formBuilder: FormBuilder) {
     const zodiacCommentCollection = collection(this.firestore, 'zodiac-comment');
     const zodiacCommentQuery = query(zodiacCommentCollection) as any;
@@ -38,7 +39,7 @@ export class EditCommentPage implements OnInit {
       res=>{
         console.log(res.docs.map(doc=>doc.data()))
         this.zodiacComment = res.docs.map(doc=>doc.data())
-        console.log(this.zodiacComment)
+        //console.log(this.zodiacComment)
         this.form.patchValue(this.zodiacComment[0])
       }
     )
