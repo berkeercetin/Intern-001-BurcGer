@@ -10,6 +10,9 @@
     },
     "rules":  {
         "@typescript-eslint/consistent-type-exports": "off",
-        "@typescript-eslint/consistent-type-imports": "off"
+        "@typescript-eslint/consistent-type-imports": "off",
+        "@typescript-eslint/no-useless-constructor": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
+
       }
 }
