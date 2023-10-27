@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "burcger-90213": {
+      "hosting": {
+        "app": [
+          "burcger-90213"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "burcger-90213"
+  }
+}
