@@ -1,0 +1,46 @@
+<div class="app-pending-comment">
+    <ion-card class="pending-comment-card">
+      <ion-card-content class="pending-comment">
+          <div class="user-img">
+            <ion-thumbnail>
+              <img class="user-profile-image" alt="User profile photo" src="assets/berke.jpg" />
+            </ion-thumbnail>
+            <ion-label class="not-commented"><i class="fa-solid fa-circle-xmark"></i> Yorumlanmadı</ion-label>
+            <ion-label class="make-comment"><i class="fa-solid fa-comment"></i> Yorumla </ion-label>
+            <ion-label class="commented"><i class="fa-solid fa-circle-check"></i>Yorumlandı</ion-label>
+            <ion-label class="comment-star"><i class="fa-solid fa-star"></i> 4.5 </ion-label>
+          </div>
+          <div class="user-all-info">
+            <ion-title>Berke Erçetin</ion-title>
+              <ion-item class="item-info">
+                <div>
+                  <p class="info">Burç Türü: Günlük</p>
+                  <p class="info">İstek Tarihi: 09/20/2023</p>
+                </div>
+              </ion-item>
+              <ion-item-sliding class="asd" (click)="toggleDropdown()">
+                <ion-item class="comment-info">
+                  <ion-label class="info"> Berke ERÇETİN </ion-label>
+                  <i [class]="isDropdownOpen ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"></i>
+                </ion-item>
+                <ion-list class="list-info" *ngIf="isDropdownOpen">
+                  <ion-item-sliding class="user-date">
+                    <div class="user-info">
+                        <i class="fa-solid fa-calendar"></i>
+                      <ion-label class="info"> Doğum tarihi: 10/21/2002 </ion-label>
+                    </div>
+                    <div class="user-info">
+                        <i class="fa-solid fa-star"></i>
+                      <ion-label class="info"> Kullanıcı Burcu: <p class="zodiac"> İkizler</p></ion-label>
+                    </div>
+                    <div class="user-info">
+                        <i class="fa-solid fa-clock"></i>
+                      <ion-label class="info"> Doğum saati: 14:36 </ion-label>
+                    </div>
+                  </ion-item-sliding>
+                </ion-list>
+              </ion-item-sliding>
+            </div>
+      </ion-card-content>
+    </ion-card>
+  </div>

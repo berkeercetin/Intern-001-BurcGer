@@ -1,16 +1,58 @@
-<!-- <ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true" *ngIf="isLoginPage()">
   <ion-toolbar>
     <ion-title>main</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">main</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <ion-router-outlet></ion-router-outlet>
-</ion-content> -->
+</ion-content>
 
-<ion-router-outlet></ion-router-outlet>
+
+<ion-footer *ngIf="isLoginPage()">
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer> -->
+
+<ion-header class="app-header" *ngIf="isLoginPage()">
+  <ion-toolbar class="header-toolbar" color="var(--burcger-primary-orange)">
+    <ion-buttons slot="start" class="coin-button">
+      <ion-button class="coins"
+        ><i class="coin-icon fa-solid fa-heart"></i> 11</ion-button
+      >
+    </ion-buttons>
+    <ion-title class="app-title ion-text-center">BurcGer</ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        ><div class="user">
+          <div class="user-profile">
+            <img src="assets/berke.jpg" class="user-profile-photo" />
+          </div>
+          <i class="premium-icon fa-regular fa-gem fa-xs"></i>
+          <i class="creator-icon fa-solid fa-book fa-xs"></i></div
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+
+<ion-tabs *ngIf="isLoginPage()">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <i class="fa-solid fa-house fa-xl"></i>
+    </ion-tab-button>
+    <ion-tab-button tab="comment-request">
+      <i class="fa-solid fa-comments fa-xl"></i>
+    </ion-tab-button>
+    <ion-tab-button tab="globe">
+      <i class="fa-solid fa-globe fa-xl"></i>
+    </ion-tab-button>
+    <ion-tab-button tab="profile-information">
+      <i class="fa-solid fa-user fa-xl"></i>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

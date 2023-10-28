@@ -1,0 +1,42 @@
+<div class="app-written">
+    <div class="written-dropdown">
+      <ion-item-sliding class="asd" (click)="toggleDropdown()">
+        <ion-item class="comment-info">
+          <ion-label class="info"> Lorem ipsum dolor sit amet 🍋🍋 </ion-label>
+          <i [class]="isDropdownOpen ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"></i>
+        </ion-item>
+        <div
+          class="zodiac-comment"
+          [ngClass]="{'zodiac-comment-expanded': isDropdownOpen}"
+        >
+          <ion-text
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            suscipit leo at augue luctus vulputate. Nullam vitae enim in leo
+            ultrices ullamcorper sed id risus. Donec tincidunt, dui in fringilla
+            semper, mauris massa tristique purus, non tristique nisi eros non
+            nisi. Ut aliquet tincidunt nunc, a molestie elit cursus in. Ut finibus
+            porta nulla, at egestas sapien vehicula eu. Praesent vitae nisl quis
+            diam ultrices finibus. Nam est urna, maximus eu dapibus quis, commodo
+            nec magna. Quisque finibus dolor nec sagittis maximus. Maecenas sed
+            molestie nibh, sed euismod diam. Praesent accumsan a tortor et
+            consectetur.</ion-text
+          >
+        </div>
+      </ion-item-sliding>
+      <ion-list class="list-info" *ngIf="isDropdownOpen">
+        <div class="zodiac-type">
+          <ion-label class="info"> Günlük Yorum </ion-label>
+        </div>
+        <ion-item-sliding class="user-date">
+          <div class="User-info">
+            <i class="fa-solid fa-user"></i>
+            <ion-label class="info"> Berke ERÇETİN </ion-label>
+          </div>
+          <div class="date-info">
+            <i class="fa-solid fa-calendar"></i>
+            <ion-label class="info"> 10/21/2023 </ion-label>
+          </div>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
