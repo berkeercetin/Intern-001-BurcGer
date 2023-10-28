@@ -1,13 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core'
 import {
   Firestore,
-  query,
-  collection,
-  getDocs,
   doc,
   updateDoc
 } from '@angular/fire/firestore'
 import { FormBuilder, FormControl } from '@angular/forms'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-edit-comment',
@@ -25,44 +23,31 @@ export class EditCommentPage implements OnInit {
     commentType: new FormControl(''),
     photoUrl: new FormControl(''),
     comment: new FormControl(''),
-    zodiac: new FormControl('')
+    zodiac: new FormControl(''),
+    commentID: new FormControl('')
   })
 
-  constructor (private readonly formBuilder: FormBuilder) {
-    const zodiacCommentCollection = collection(this.firestore, 'zodiac-comment')
-    const zodiacCommentQuery = query(zodiacCommentCollection) as any
-
-    getDocs(zodiacCommentQuery)
-      .then(
-        res => {
-          console.log(res.docs.map(doc => doc.data()))
-          this.zodiacComment = res.docs.map(doc => doc.data())
-          // console.log(this.zodiacComment)
-          this.form.patchValue(this.zodiacComment[0])
-        }
-      )
-      .catch(err => {
-        console.error(err)
-      })
-
-    // //subscribe({
-    //   next: res=>{
-    //     console.log(res);
-    //   },
-    //   error: err=>{
-    //     console.log(err);
-    //   },
-    //   complete: ()=>{
-
-    //   }
-    // })
-  }
+  constructor (private readonly formBuilder: FormBuilder,
+    private readonly route: ActivatedRoute
+  ) {}
 
   ngOnInit () {
   }
 
-  updateData () {
-    const docInstance = doc(this.firestore, 'zodiac-comment', 'fyPqsn656j90qyq9tLBX')
+  ionViewWillEnter () {
+    console.log(window.history.state)
+    this.form.patchValue(window.history.state)
+    console.log(this.form.value)
+    this.route.params.subscribe(
+      params => {
+        console.log(params['commentID'])
+      }
+    )
+  }
+
+  updateData () { // veri guncellemesi yapilan kisim.
+    // eslint-disable-next-line spaced-comment
+    const docInstance = doc(this.firestore, 'zodiac-comment', this.form.controls.commentID.value as string) //CommentID'ye gore duzenleme yapilan yer.
     console.log(this.form.value)
     updateDoc(docInstance,
       this.form.value

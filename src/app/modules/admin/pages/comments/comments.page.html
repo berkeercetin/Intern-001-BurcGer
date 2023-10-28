@@ -1,0 +1,24 @@
+<ion-header [translucent]="true" class="header ion-no-border">
+  <ion-toolbar class="backgroundNone">
+    <ion-title class="title"> Yorumlar </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar class="backgroundNone">
+    <ion-list class="backgroundNone">
+      <ion-item class="backgroundNone" *ngFor="let zodiacComment of comments" [routerLink]="'../edit-comment/' + zodiacComment.commentID" [state]='zodiacComment'>
+        <ion-label>{{ zodiacComment.title }}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll>
+      <ion-infinite-scroll-content
+        loadingText="Lütfen Bekleyin..."
+        loadingSpinner="bubbles"
+      ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-toolbar>
+</ion-content>

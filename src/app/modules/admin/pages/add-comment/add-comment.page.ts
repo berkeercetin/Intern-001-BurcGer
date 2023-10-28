@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core'
-import { Firestore, collection, addDoc } from '@angular/fire/firestore'
+import { Firestore, collection, addDoc, updateDoc } from '@angular/fire/firestore'
 
 @Component({
   selector: 'app-add-comment',
@@ -12,22 +12,14 @@ export class AddCommentPage implements OnInit {
 
   constructor () { }
 
-  // async addComment(zodiac: string, commentType: string, title: string, photoUrl: string, comment: string){
-  //   const docRef = await addDoc(doc(this.firestore, 'zodiacComment'), {
-  //     zodiac: zodiac,
-  //     commentType: commentType,
-  //     title: title,
-  //     photoUrl: photoUrl,
-  //     comment: comment
-  //   });
-  //   console.log("Document written with ID: ", docRef.id);
-  // }
-
   addData (addComment: any) {
     const collectionInstance = collection(this.firestore, 'zodiac-comment')
-    addDoc(collectionInstance, addComment.value).then(() => {
-      console.log('Data Saved.')
-    })
+    addDoc(collectionInstance, addComment.value)
+      .then((res) => {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises, spaced-comment
+        updateDoc(res, { commentID: res.id }) //commentID otomatik ekleme islemi.
+        console.log('Data Saved.')
+      })
       .catch((err) => {
         console.log(err)
       })

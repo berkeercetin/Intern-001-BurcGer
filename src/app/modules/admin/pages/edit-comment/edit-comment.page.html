@@ -10,7 +10,7 @@
 
   <form [formGroup]="form">
     <ion-item class="select items" placeholder="">
-      <ion-select *ngFor="let zc of zodiacComment" label="{{zc.zodiac}}" formControlName="zodiac">
+      <ion-select formControlName="zodiac">
         <ion-select-option value="Koç">Koç</ion-select-option>
         <ion-select-option value="Boğa">Boğa</ion-select-option>
         <ion-select-option value="İkizler">İkizler</ion-select-option>
@@ -27,7 +27,7 @@
     </ion-item>
 
     <ion-item class="select items" placeholder="">
-      <ion-select *ngFor="let zc of zodiacComment" [label]="form.controls.commentType.value || 'Yorum Türü'" formControlName="commentType">
+      <ion-select [label]="form.controls.commentType.value || 'Yorum Türü'" formControlName="commentType">
         <ion-select-option value="Günlük">Günlük ile Değiştir</ion-select-option>
         <ion-select-option value="Haftalık">Haftalık ile Değiştir</ion-select-option>
         <ion-select-option value="Aylık">Aylık ile Değiştir</ion-select-option>
@@ -36,19 +36,19 @@
     </ion-item>
 
     <ion-item class="commentItem items">
-      <ion-textarea *ngFor="let zc of zodiacComment" placeholder="Yorum Başlığını Düzenle." value="{{zc.title}}"
+      <ion-textarea placeholder="Yorum Başlığını Düzenle."
         formControlName="title"></ion-textarea>
     </ion-item>
 
     <ion-item class="commentItem items" (click)="photo.click()">
-      <ion-label style="color: rgba(217, 217, 217, 0.6)" *ngFor="let zc of zodiacComment">{{zc.photoUrl}}</ion-label>
+      <ion-label style="color: rgba(217, 217, 217, 0.6)"></ion-label>
       <ion-icon name="image-outline"></ion-icon>
     </ion-item>
     <input type="file" #photo style="display: none" />
 
     <ion-item class="commentItem editComment items" lines="none">
-      <ion-textarea placeholder="Yorumu Düzenle." [autoGrow]="true" *ngFor="let zc of zodiacComment"
-        formControlName="comment" value="{{zc.comment}}">
+      <ion-textarea placeholder="Yorumu Düzenle." [autoGrow]="true"
+        formControlName="comment">
       </ion-textarea>
     </ion-item>
 
