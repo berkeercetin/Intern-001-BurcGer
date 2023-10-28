@@ -1,4 +1,4 @@
-<div class="app-write-comment">
+<ion-content class="app-my-comments" [fullscreen]="true">
   <ion-card class="write-comment">
     <ion-card-header>
       <ion-card-title class="card-title"
@@ -27,47 +27,20 @@
     </ion-card-content>
 
     <ion-buttons class="comments-buttons">
-      <ion-button fill="clear"><i class="fa-solid fa-pen"></i></ion-button>
+      <ion-button fill="clear"><i class="fa-solid fa-star"></i></ion-button>
       <ion-button fill="clear"><i class="fa-solid fa-eye"></i></ion-button>
       <ion-button fill="clear" (click)="toggleDropdown()">
         <i
           [class]="isDropdownOpen ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"
         ></i></ion-button
     ></ion-buttons>
-
     <ion-list class="dropdown-list" *ngIf="isDropdownOpen">
       <ion-item class="item-info">
         <div>
           <p class="info">Burç Türü: Günlük</p>
           <p class="info">İstek Tarihi: 09/20/2023</p>
-          <p class="info">Yorumlanma Tarihi: 10/21/2023</p>
         </div>
       </ion-item>
-      <ion-item-sliding class="asd" (click)="toggleDropdown2()">
-        <ion-item class="comment-info">
-          <ion-label class="info"> Berke ERÇETİN </ion-label>
-          <i [class]="isDropdownOpen2 ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"></i>
-        </ion-item>
-        <ion-list class="list-info" *ngIf="isDropdownOpen2">
-          <ion-item-sliding class="user-date">
-            <div class="user-info">
-                <i class="fa-solid fa-calendar"></i>
-              <ion-label class="info"> Doğum tarihi: 10/21/2002 </ion-label>
-            </div>
-            <div class="user-info">
-                <i class="fa-solid fa-star"></i>
-              <ion-label class="info">
-                Kullanıcı Burcu:
-                <p class="zodiac">İkizler</p></ion-label
-              >
-            </div>
-            <div class="user-info">
-                <i class="fa-solid fa-clock"></i>
-              <ion-label class="info"> Doğum saati: 14:36 </ion-label>
-            </div>
-          </ion-item-sliding>
-        </ion-list>
-      </ion-item-sliding>
     </ion-list>
   </ion-card>
-</div>
+</ion-content>

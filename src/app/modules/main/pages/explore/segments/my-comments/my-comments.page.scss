@@ -1,0 +1,98 @@
+.app-my-comments {
+    --padding-top: 90px;
+
+    .write-comment {
+        box-shadow: 0px 0px 4px 2px rgba(115, 117, 156, 0.5);
+    
+        .card-title {
+          display: flex;
+          flex-direction: row;
+    
+          .comment-star {
+            color: var(--burcger-primary-orange);
+            font-size: 16px;
+          }
+    
+          .comment-date {
+            font-size: 14px;
+          }
+        }
+    
+        .zodiac-comment {
+          max-height: 270px;
+          overflow: hidden;
+        }
+    
+        .comments-buttons {
+          justify-content: space-around;
+          color: white;
+          margin-block: 8px;
+        }
+    
+        .dropdown-list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+    
+          .asd {
+            font-family: Inter;
+            font-size: 12px;
+            --background: var(--burcger-background-color);
+            --border-radius: 4px;
+            width: 200px;
+            --min-height: 32px;
+            position: relative;
+            border-radius: 4px; /* Apply border radius */
+            padding: 2.5px; /* Adjust padding as needed */
+            background: var(--burcger-linear-color); /* Apply linear gradient */
+            color: white; /* Text color */
+    
+            &:before {
+              content: "";
+              position: absolute;
+              top: -4px; /* Adjust the negative top value to create a border effect */
+              right: -4px; /* Adjust the negative right value to create a border effect */
+              bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+              left: -4px; /* Adjust the negative left value to create a border effect */
+              border: 2px solid transparent; /* Set a transparent border */
+              border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+            }
+    
+            .comment-info {
+              font-size: 12px;
+              --min-height: 24px;
+              --background: var(--burcger-background-color);
+              border-bottom: 1.5px solid var(--burcger-primary-orange);
+    
+              .info {
+                margin: 0;
+              }
+            }
+    
+            .list-info {
+              background-color: var(--burcger-background-color);
+              border-top: 2px solid var(--burcger-primary-orange);
+    
+              .user-info {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+    
+                .info {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  justify-content: center;
+    
+                  .zodiac {
+                    color: var(--burcger-primary-purple);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+}  
