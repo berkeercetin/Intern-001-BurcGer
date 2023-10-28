@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { FormsModule } from '@angular/forms'
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular'
 
-import { CommentRequestPageRoutingModule } from './comment-request-routing.module';
+import { CommentRequestPageRoutingModule } from './comment-request-routing.module'
 
-import { CommentRequestPage } from './comment-request.page';
-
+import { CommentRequestPage } from './comment-request.page'
 
 @NgModule({
   imports: [
