@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-comment-panel',
   templateUrl: './comment-panel.page.html',
-  styleUrls: ['./comment-panel.page.scss'],
+  styleUrls: ['./comment-panel.page.scss']
 })
 export class CommentPanelPage implements OnInit {
+  constructor () { }
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit () {
   }
-
 }
