@@ -4,13 +4,18 @@
     <ion-label class="girisyapheader">Kayıt Ol</ion-label>
 
     <div style="display: flex; flex-direction: column; align-items: center;">
-      <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)" #fileUpload>
-      <!-- <ion-icon *ngIf="!userService.userData?.photoUrl" name="person-circle-sharp" class="photo-icon"></ion-icon>
-      <div style="text-align: center; margin-top: 19px;" *ngIf="userService.userData?.photoUrl">
-        <img src="{{userService.userData?.photoUrl}}" />
+      <!-- <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)" #fileUpload>
+      <ion-icon *ngIf="!user.data?.photoUrl" name="person-circle-sharp" class="photo-icon"></ion-icon>
+      <div style="text-align: center; margin-top: 19px;" *ngIf="user.data?.photoUrl">
+        <img src="{{user.data?.photoUrl}}" />
         <img [src]="event.target.files[0]" alt="">
       </div>
-      <ion-button class="changePhoto" type="file" (click)="fileUpload.click()">Resim Ekle</ion-button> -->
+      <ion-button class="changePhoto" type="file" (click)="uploadFile.click()">Resim Ekle</ion-button> -->
+      <div style="text-align: center; margin-top: 19px;">
+        <img [src]="user?.photoUrl || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' " alt="" (click)="upload.click()">
+      </div>
+      <input id="fileUpload" type="file" accept="image/png" #upload style="display: none;">
+      <!-- <ion-button class="changePhoto" (click)="uploadFile(upload)">Upload</ion-button> -->
     </div>
 
     <ion-item class="girisyap" lines="none" style="width: 100%; justify-content: center;">
@@ -95,7 +100,7 @@
 
 
     <div class="modalHeader">
-      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-checkbox  slot="start"></ion-checkbox> 
    
         <ion-label id="open-custom-dialog" expand="block" class="sozlesme"> <a style="color: #FD7E14; text-decoration: underline;">Üyelik Sözleşmesi</a> şartlarını okudum ve kabul ediyorum.
         </ion-label>
@@ -342,7 +347,7 @@
         </ion-modal>
     
     </div>
-    <ion-button (click)="SignUp()" class="buton" color="#281A28">
+    <ion-button (click)="SignUp(upload)" class="buton" color="#281A28">
       <ion-label>Kayıt Ol</ion-label>
     </ion-button>
   </div>
