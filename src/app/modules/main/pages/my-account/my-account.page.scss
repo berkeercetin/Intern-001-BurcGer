@@ -1,0 +1,168 @@
+.my-profile-toolbar {
+  --min-height:24px;
+  .toolbar-icon {
+    --background: transparent;
+    --border-style: none;
+    --min-height: 24px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }
+}
+.app-my-profile {
+  .welcome-text {
+    font-size: 14px;
+  }
+  .user-welcome {
+    margin-block: 20px;
+    .user {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .user-profile {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        border-radius: 100%;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+
+        &:before {
+          padding: 4px;
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          border-radius: 100%; /* !importanté */
+          background: var(--burcger-linear-color);
+        }
+
+        .user-profile-photo {
+          width: 60px;
+          height: 60px;
+          border-radius: 100%;
+        }
+      }
+      .premium-icon {
+        display: flex;
+        position: absolute;
+        color: var(--burcger-primary-orange);
+        bottom: 0;
+        right: 56%;
+      }
+      .creator-icon {
+        display: flex;
+        position: absolute;
+        color: var(--burcger-primary-orange);
+        bottom: 0;
+        left: 52%;
+      }
+    }
+  }
+  .user-name-surname {
+    font-size: 26px;
+  }
+
+  .burcger-box {
+    margin-block: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .burcger-box-content {
+      --inner-padding-end: 0;
+      font-family: Inter;
+      font-size: 12px;
+      --padding-end: 0;
+      --padding-start: 0;
+      --background: var(--burcger-background-color);
+      --border-radius: 4px;
+      width: 210px;
+      --min-height: 64px;
+      position: relative;
+      border-radius: 4px; /* Apply border radius */
+      padding: 2px; /* Adjust padding as needed */
+      background: var(--burcger-linear-color); /* Apply linear gradient */
+      color: white; /* Text color */
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -4px; /* Adjust the negative top value to create a border effect */
+        right: -4px; /* Adjust the negative right value to create a border effect */
+        bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+        left: -4px; /* Adjust the negative left value to create a border effect */
+        border: 2px solid transparent; /* Set a transparent border */
+        border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+      }
+      .box-info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 8px;
+        margin-right: 4px;
+      }
+    }
+  }
+  .burcger-button {
+    margin-block: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .menuBtn {
+      font-family: Inter;
+      font-size: 12px;
+      --padding-end: 0;
+      --padding-start: 0;
+      --background: var(--burcger-background-color);
+      --border-radius: 4px;
+      width: 250px;
+      --min-height: 32px;
+      position: relative;
+      border-radius: 4px; /* Apply border radius */
+      padding: 2px; /* Adjust padding as needed */
+      background: var(--burcger-linear-color); /* Apply linear gradient */
+      color: white; /* Text color */
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -4px; /* Adjust the negative top value to create a border effect */
+        right: -4px; /* Adjust the negative right value to create a border effect */
+        bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+        left: -4px; /* Adjust the negative left value to create a border effect */
+        border: 2px solid transparent; /* Set a transparent border */
+        border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+      }
+      .notification-icon {
+        margin-left: 8px;
+        margin-right: 4px;
+      }
+    }
+  }
+  .log-out {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    .log-out-logo {
+        --border-radius: 0px;
+        --padding-top: 0px;
+        --padding-bottom: 0px;
+        --padding-start: 0;
+        --padding-end: 0;
+      width: 120px;
+      --background: transparent;
+      --border-style: none;
+      border-radius: 4px;
+      border: 2px solid #666;
+      .log-out-text {
+        margin-left: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+}
