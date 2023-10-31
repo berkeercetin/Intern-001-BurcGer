@@ -6,7 +6,7 @@
               <img class="user-profile-image" alt="User profile photo" src="assets/berke.jpg" />
             </ion-thumbnail>
             <ion-label class="not-commented"><i class="fa-solid fa-circle-xmark"></i> Yorumlanmadı</ion-label>
-            <ion-label class="make-comment"><i class="fa-solid fa-comment"></i> Yorumla </ion-label>
+            <ion-label button (click)="presentModal()" class="make-comment"><i class="fa-solid fa-comment"></i> Yorumla </ion-label>
             <ion-label class="commented"><i class="fa-solid fa-circle-check"></i>Yorumlandı</ion-label>
             <ion-label class="comment-star"><i class="fa-solid fa-star"></i> 4.5 </ion-label>
           </div>

@@ -7,13 +7,17 @@ import { Router } from '@angular/router'
   styleUrls: ['./main.page.scss']
 })
 export class MainPage implements OnInit {
-  constructor (private readonly router: Router) { }
+  constructor (private readonly router: Router) {}
 
-  ngOnInit () {
-  }
+  ngOnInit () {}
 
   isLoginPage () {
-    if (this.router.url === '/main/login' || this.router.url === '/main/forgot-password' || this.router.url === '/main/register') {
+    if (
+      this.router.url === '/main/login' ||
+      this.router.url === '/main/forgot-password' ||
+      this.router.url === '/main/register' ||
+      this.router.url === '/main/my-account'
+    ) {
       return false
     } else {
       return true
