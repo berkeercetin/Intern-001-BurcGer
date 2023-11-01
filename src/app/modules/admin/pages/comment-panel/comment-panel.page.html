@@ -1,21 +1,16 @@
 <ion-content [fullscreen]="true">
-  <ion-header [translucent]="true" class="ion-no-border">
+  <ion-header [translucent]="true" class="ion-no-border" style="margin-top: 14rem;">
     <ion-title class="title"><div style="white-space: normal;">Yorumlar hakkında yapılacak işlemi seçin ;</div></ion-title>
   </ion-header>
 
   <ion-item button detail class="menuBtn" routerLink="../add-comment">
     <ion-icon color="white" name="add"></ion-icon>
-    Yorum Ekle
-  </ion-item>
-
-  <ion-item button detail class="menuBtn" routerLink="../comment-feedback">
-    <ion-icon color="white" name="chatbubble-ellipses"></ion-icon>
-    Yorum Geri Bildirimleri
+    <ion-label>Yorum Ekle</ion-label>
   </ion-item>
 
   <ion-item button detail class="menuBtn" routerLink="../comments">
-    <ion-icon color="white" name="person"></ion-icon>
-    Yorum Düzenle
+    <ion-icon color="white" name="cog-outline"></ion-icon>
+    <ion-label>Yorum Düzenle</ion-label>
   </ion-item>
 
   <ion-buttons class="backBtn">

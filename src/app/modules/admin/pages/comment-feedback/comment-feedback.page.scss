@@ -28,12 +28,6 @@
     --background: none;
    }
 
-   .contentLine{
-    height: 1px;
-    border-radius: 8px;
-    background-color: #9747FF;
-   }
-
    .user{
     text-align: center;
    }
@@ -41,4 +35,10 @@
    .subtitle{
     color: #FFFFFF;
    }
+ }
+
+ .contentLine{
+  height: 1px;
+  border-radius: 8px;
+  background-color: #9747FF;
  }
