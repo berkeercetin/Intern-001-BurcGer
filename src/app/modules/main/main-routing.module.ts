@@ -47,8 +47,23 @@ const routes: Routes = [
         path: 'explore',
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/explore/explore.module').then(m => m.ExplorePageModule)
+      },
+      {
+        path: 'my-account',
+        // eslint-disable-next-line @typescript-eslint/promise-function-async
+        loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountPageModule)
       }
     ]
+  },
+  {
+    path: 'user-info',
+    // eslint-disable-next-line @typescript-eslint/promise-function-async
+    loadChildren: () => import('./modals/user-info/user-info.module').then(m => m.UserInfoPageModule)
+  },
+  {
+    path: 'write-comment',
+    // eslint-disable-next-line @typescript-eslint/promise-function-async
+    loadChildren: () => import('./modals/write-comment/write-comment.module').then(m => m.WriteCommentPageModule)
   }
 
 ]
