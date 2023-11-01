@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="modalDismiss(false)" default-href="/main/comment-request"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Yorum Ekle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="commentForm">
+    <ion-grid>
+      <ion-row class="zodiac-type">
+        <ion-col size="10">
+          <div class="burcger-button">
+            <ion-item formControlName="commentZodiac" button detail id="open-zodiac" class="menuBtn">
+              <i class="notification-icon fa-solid fa-star"></i>
+              {{ selectedTextZodiac }}
+            </ion-item>
+          </div>
+          <div class="burcger-button">
+            <ion-item formControlName="commentType" button detail id="open-type" class="menuBtn">
+              <i class="notification-icon fa-solid fa-star"></i>
+              {{ selectedTextType }}
+            </ion-item>
+          </div>
+          <ion-picker trigger="open-type" [columns]="pickerColumns" [buttons]="pickerButtons"></ion-picker>
+          <ion-picker trigger="open-zodiac" [columns]="pickerColumnsZodiac" [buttons]="pickerButtonsZodiac"></ion-picker>
+          <ng-container *ngIf="selectedOption === 'daily'">
+            <ion-input formControlName="commentDay" placeholder="Day"></ion-input>
+            <ion-input formControlName="commentMonth" placeholder="Month"></ion-input>
+            <ion-input formControlName="commentYear" placeholder="Year"></ion-input>
+          </ng-container>
+
+          <ng-container *ngIf="selectedOption === 'weekly'">
+            <ion-input formControlName="commentWeek" placeholder="Week"></ion-input>
+          </ng-container>
+
+          <ng-container *ngIf="selectedOption === 'monthly'">
+            <ion-input formControlName="commentMonth" placeholder="Month"></ion-input>
+            <ion-input formControlName="commentYear" placeholder="Year"></ion-input>
+          </ng-container>
+
+          <ng-container *ngIf="selectedOption === 'yearly'">
+            <ion-input formControlName="commentYear" placeholder="Year"></ion-input>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row class="zodiac-inputs">
+        <ion-col size="10">
+          <div class="burcger-button">
+            <ion-item button type="file" detail accept="image/png, image/jpeg" #fileUpload class="menuBtn">
+              <i class="notification-icon fa-solid fa-file-import"></i>
+              Burç için resim seç
+            </ion-item>
+          </div>
+          <ion-input formControlName="commentTitle" class="zodiac-title" color="var(--burcger-primary-purple)"
+            label="Burç Başlığı" label-placement="floating" fill="outline" placeholder="Burç Başlığını Girin"></ion-input>
+          <div class="burc-comment">
+            <ion-textarea formControlName="commentText" class="zodiac-text-area" auto-grow label="Burç İçeriği"
+              label-placement="floating" fill="outline" placeholder="Burç İçeriğini Girin"></ion-textarea>
+            <ion-item button class="save-icon" (click)="addComment(true)">
+              <i class="fa-solid fa-floppy-disk fa-2xl"></i>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
