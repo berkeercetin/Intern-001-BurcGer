@@ -1,0 +1,24 @@
+.title{
+    font-size: 24px;
+    text-align: center;
+    font-family: Inter;
+    margin: 20px;
+}
+
+.menuBtn{
+    width: 75%;
+    font-size: 12px;
+    text-align: center;
+    --background: none;
+    font-family: Inter;
+    margin: auto auto 16px auto;
+    border: 1.5px solid #FD7E14;
+    border-image: linear-gradient(to right,#FD7E14, #9747FF) 1;
+}
+
+.backBtn{
+    width: 48px;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid #9747FF;
+}

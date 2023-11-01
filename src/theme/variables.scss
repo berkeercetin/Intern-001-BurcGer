@@ -3,6 +3,10 @@
 
 /** Ionic CSS Variables **/
 :root {
+  /*Background Color*/
+  ion-content{
+    --background: #090A25;
+  }
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
