@@ -11,7 +11,7 @@ import { UserModel } from '../../models/usermodel'
   styleUrls: ['./profile-information.page.scss']
 })
 export class ProfileInformationPage implements OnInit {
-  user: UserModel = new UserModel()
+  user!: UserModel
   ionicForm!: FormGroup
   isSubmitted = false
   isEdit = false

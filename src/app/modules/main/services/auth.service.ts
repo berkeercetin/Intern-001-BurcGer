@@ -23,7 +23,7 @@ export class AuthService {
       this._auth,
       email.trim(),
       password.trim()
-    ).then( auth => { return this._setUserData(auth, { ...data }) })
+    ).then(async auth => { return await this._setUserData(auth, { ...data }) })
   }
 
   async login (email: string, password: string): Promise<UserCredential> {
@@ -44,6 +44,10 @@ export class AuthService {
 
   async resetPassword (email: string) {
     await sendPasswordResetEmail(this._auth, email)
+  }
+
+  getUserUid () {
+    return this._auth.currentUser?.uid
   }
 
   constructor () { }

@@ -19,7 +19,7 @@ export class UserModel {
     this.email = data?.email || ''
     this.gender = data?.gender || ''
     this.birthPlace = data?.birthPlace || ''
-    this.birthTime = data?.birthTime || ''
+    this.birthTime = new Date(data?.birthTime).toISOString() || ''
     this.relation = data?.relation || ''
     this.job = data?.job || ''
     this.photoUrl = data?.photoUrl || ''

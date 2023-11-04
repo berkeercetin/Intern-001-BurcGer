@@ -13,24 +13,11 @@ import { UserModel } from '../../models/usermodel'
 })
 export class RegisterPage implements OnInit {
   registerForm!: FormGroup
+  isChecked = false
+  user!: UserModel
   get errorControl () {
     return this.registerForm.controls
   }
-
-  isChecked = false
-
-  user: any
-  name?: string
-  surname?: string
-  email!: string
-  password!: string
-  passwordagain?: string
-  gender?: string
-  birthPlace?: string
-  birthTime?: string
-  relation?: string
-  job?: string
-  photoUrl?: string
 
   constructor (private readonly authservice: AuthService,
     private readonly router: Router,
@@ -39,9 +26,6 @@ export class RegisterPage implements OnInit {
     public userService: UserService) { }
 
   ngOnInit () {
-    if (this.birthTime) {
-      const date = new Date(this.birthTime).toISOString()
-    }
     this.registerForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       surname: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -57,10 +41,6 @@ export class RegisterPage implements OnInit {
     }, {
       validators: MustMatch('password', 'passwordagain') as any
     })
-  }
-
-  register () {
-    console.log(this.name, this.surname, this.gender)
   }
 
   async presentAlert (err: any) {
@@ -96,20 +76,6 @@ export class RegisterPage implements OnInit {
           )
       })
     }
-  }
-
-  event: any
-  onFileSelected (event: any) {
-    this.event = event
-    console.log(event.target.files[0])
-    console.log(event)
-  }
-
-  uploadFile (input: HTMLInputElement) {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    this.userService.uploadFile(input).then(res => {
-      this.photoUrl = res
-    })
   }
 }
 
