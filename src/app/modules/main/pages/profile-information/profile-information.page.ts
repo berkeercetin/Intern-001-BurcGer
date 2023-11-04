@@ -15,13 +15,13 @@ export class ProfileInformationPage implements OnInit {
   ionicForm!: FormGroup
   isSubmitted = false
   isEdit = false
-
   get errorControl () {
     return this.ionicForm.controls
   }
 
   constructor (private readonly userService: UserService, private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly loadingController: LoadingController,
-    private readonly alertController: AlertController) { }
+    private readonly alertController: AlertController) {
+  }
 
   async ngOnInit () {
     this.loadingController.create({
