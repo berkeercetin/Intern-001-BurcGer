@@ -47,6 +47,7 @@ export class WriteCommentPage implements OnInit {
     })
   }
 
+
   /* Yanlış Yerde */
   // async updateComment () {
   //   await this.commentService.updateComment(this.comment)
