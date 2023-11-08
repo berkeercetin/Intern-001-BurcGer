@@ -1,6 +1,6 @@
 <ion-header [translucent]="true" class="header ion-no-border">
   <ion-toolbar class="background">
-    <ion-title class="title"> Yorum Geri Bildirimleri </ion-title>
+    <ion-title class="title"> Uygulama Geri Bildirimleri </ion-title>
     <ion-buttons slot="start">
       <ion-back-button default-href="#"></ion-back-button>
     </ion-buttons>
@@ -13,51 +13,45 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-card class="feedbackCard" *ngFor="let commentFeedback of feedbacks">
+  <ion-card class="feedbackCard" *ngFor="let appFeedback of feedbacks">
     <ion-accordion-group>
       <ion-accordion value="first" class="background">
 
         <ion-item slot="header" class="background">
-          <ion-label>{{ commentFeedback.title }}</ion-label>
+          <ion-label>{{ appFeedback.feedbackTitle }}</ion-label>
         </ion-item>
 
         <div class="ion-padding" slot="content">
 
-          <ion-card-subtitle class="subtitle">
-            {{ commentFeedback.commentType }}
-          </ion-card-subtitle>
-
-          <hr class="contentLine">
-
           <ion-card-content>
-            {{ commentFeedback.comment }}
+            {{ appFeedback.feedback }}
           </ion-card-content>
 
           <hr class="contentLine">
 
           <ion-card-subtitle class="subtitle">
-            {{ commentFeedback.feedbackDate }}
+            {{ appFeedback.feedbackDate }}
           </ion-card-subtitle>
 
           <hr class="contentLine">
 
           <ion-card-subtitle class="subtitle">
-            {{ commentFeedback.user }}
+            {{ appFeedback.user }}
           </ion-card-subtitle>
           
         </div>
       </ion-accordion>
     </ion-accordion-group>
     <!-- <ion-card-header>
-      <ion-card-title>{{ commentFeedback.title }}</ion-card-title>
-      <ion-card-subtitle>{{ commentFeedback.commentType }}</ion-card-subtitle>
+      <ion-card-title>{{ appFeedback.title }}</ion-card-title>
+      <ion-card-subtitle>{{ appFeedback.commentType }}</ion-card-subtitle>
     </ion-card-header> -->
 
     <!-- <ion-card-content>
-      {{ commentFeedback.comment }} 
+      {{ appFeedback.comment }} 
     </ion-card-content>
     <ion-card-content>
-      {{ commentFeedback.feedbackDate }} 
+      {{ appFeedback.feedbackDate }} 
     </ion-card-content> -->
   </ion-card>
 </ion-content>

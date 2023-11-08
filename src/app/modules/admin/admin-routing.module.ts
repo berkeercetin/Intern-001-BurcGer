@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'feedback',
     loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'app-feedback',
+    loadChildren: () => import('./pages/app-feedback/app-feedback.module').then( m => m.AppFeedbackPageModule)
   }
 
 
