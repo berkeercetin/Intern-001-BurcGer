@@ -3,13 +3,12 @@ body {
 }
 
 .forBackAndEdit{
-    margin-top: 10px;
     font-size: 25px;
-    margin: 10px;
+    margin: 15px 10px 10px 10px;
 }
 
 ion-icon {
-    color: white;
+   
     
     &.photo-icon {
         margin: auto;
@@ -21,9 +20,9 @@ ion-icon {
 
 .name {
     display: flex;
-    color: white;
+    // color: white;
     font-size: 16px;
-    margin-top: 10px;
+    margin: 10px 10px 15px 10px;
     font-weight: 500;
     line-height: 30px;
     justify-content: center;
