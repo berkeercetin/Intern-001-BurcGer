@@ -64,6 +64,9 @@ export class RegisterPage implements OnInit {
       const userData = new UserModel(this.registerForm.value)
       this.userService.uploadFile(input).then(res => {
         userData.photoUrl = res
+        if(!res){
+          userData.photoUrl = 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg'
+        }
         console.log(userData)
         this.authservice.signup(this.registerForm.value.email, this.registerForm.value.password, userData)
           .then(

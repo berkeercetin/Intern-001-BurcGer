@@ -12,6 +12,7 @@ export class UserModel {
   premium?: boolean
   contentCreator?: boolean
   coin?: number
+  premiumTest?: boolean
 
   constructor (data?: any) {
     this.name = data?.name || ''
@@ -26,6 +27,7 @@ export class UserModel {
     this.premium = false
     this.contentCreator = false
     this.coin = 0
+    this.premiumTest = false
     this.uid = data?.uid || ''
   }
 }
