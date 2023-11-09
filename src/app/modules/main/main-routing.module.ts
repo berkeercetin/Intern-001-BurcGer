@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
 import { MainPage } from './main.page'
+import { AuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard'
+
+const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(['/main/login'])
+const redirectLoggedInToAccount = () => redirectLoggedInTo(['/main/home'])
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -15,36 +19,50 @@ const routes: Routes = [
     children: [
       {
         path: 'register',
+        // canActivate: [AuthGuard],
+        // data: { authGuardPipe: redirectUnauthorizedToHome },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
       },
       {
         path: 'login',
+        // canActivate: [AuthGuard],
+        // data: { authGuardPipe: redirectUnauthorizedToHome },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
       },
       {
         path: 'forgot-password',
+        // canActivate: [AuthGuard],
+        // data: { authGuardPipe: redirectUnauthorizedToHome },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
       },
       {
         path: 'profile-information',
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToHome },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/profile-information/profile-information.module').then(m => m.ProfileInformationPageModule)
       },
       {
         path: 'home',
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToHome },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
       },
       {
         path: 'comment-request',
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToHome },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/comment-request/comment-request.module').then(m => m.CommentRequestPageModule)
       },
       {
         path: 'explore',
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToHome },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/explore/explore.module').then(m => m.ExplorePageModule)
       },

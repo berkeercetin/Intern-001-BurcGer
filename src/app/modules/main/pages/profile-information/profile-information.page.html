@@ -1,55 +1,61 @@
-<div>
-  <ion-icon class="forBackAndEdit" name="arrow-back"></ion-icon>
-  <ion-icon style="float: right;" class="forBackAndEdit" name="brush"></ion-icon>
-</div>
-<ion-content *ngIf = "user">
-    <!-- *ngIf="user" -> it will be in project at the end -->
-  <ion-icon name="person-circle-sharp" class="photo-icon"></ion-icon>
-  <div style="text-align: center; margin-top: 19px;">
-    <img src=""/>
+<ion-content [fullscreen]="true" *ngIf="user">
+  <div>
+    <ion-icon class="forBackAndEdit" name="arrow-back"></ion-icon>
+    <ion-icon style="float: right; color: #FD9843;" class="forBackAndEdit" name="brush"></ion-icon>
   </div>
-  <ion-label class="name">{{user.name}} {{user.surname}}</ion-label>
+  <div style="text-align: center; margin-top: 19px;">
+    <img
+      src="{{user?.photoUrl}} || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
+      alt="">
+  </div>
+  <ng-container *ngIf="ionicForm">
+    <form [formGroup]="ionicForm">
 
-  <ion-list>
-    <ion-item class="input" lines="none">
-      <ion-label>{{user.email}}</ion-label>
-      <ion-input value="" [disabled]="true" class="input"></ion-input>
-    </ion-item>
-  </ion-list>
 
-  <ion-list>
-    <ion-item class="input" lines="none">
-      <ion-label>{{user.birthTime}}</ion-label>
-      <ion-input value="" [disabled]="true" class="input"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-label class="name">{{user.name}} {{user.surname}}</ion-label>
 
-  <ion-list>
-    <ion-item class="input" lines="none">
-      <ion-label>{{user.relation}}</ion-label>
-      <ion-input value="" [disabled]="true" class="input"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-list>
+        <ion-item class="input" lines="none">
+          <!-- <ion-label>{{user.birthTime}}</ion-label> -->
+          <ion-input class="input" formControlName="email"></ion-input>
+        </ion-item>
+      </ion-list>
 
-  <ion-list>
-    <ion-item class="input" lines="none">
-      <ion-label>{{user.gender}}</ion-label>
-      <ion-input value="" [disabled]="true" class="input"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-list>
+        <ion-item class="input" lines="none">
+          <!-- <ion-label>{{user.birthTime}}</ion-label> -->
+          <ion-input class="input" formControlName="birthTime"></ion-input>
+        </ion-item>
+      </ion-list>
 
-  <ion-list>
-    <ion-item class="input" lines="none">
-      <ion-label>{{user.job}}</ion-label>
-      <ion-input value="" [disabled]="true" class="input"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-list>
+        <ion-item class="input" lines="none">
+          <!-- <ion-label>{{user.relation}}</ion-label> -->
+          <ion-input class="input" formControlName="relation"></ion-input>
+        </ion-item>
+      </ion-list>
 
-  <ion-list>
-    <ion-item class="input" lines="none">
-      <ion-label>{{user.birthPlace}}</ion-label>
-      <ion-input value="" [disabled]="true" class="input"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-list>
+        <ion-item class="input" lines="none">
+          <!-- <ion-label>{{user.gender}}</ion-label> -->
+          <ion-input class="input" formControlName="gender"></ion-input>
+        </ion-item>
+      </ion-list>
 
+      <ion-list>
+        <ion-item class="input" lines="none">
+          <!-- <ion-label>{{user.job}}</ion-label> -->
+          <ion-input class="input" formControlName="job"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item class="input" lines="none">
+          <!-- <ion-label>{{user.birthPlace}}</ion-label> -->
+          <ion-input class="input" formControlName="birthPlace"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button (click)="submitForm()">Kaydet</ion-button>
+    </form>
+  </ng-container>
 </ion-content>
