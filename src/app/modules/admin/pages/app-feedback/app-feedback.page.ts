@@ -1,11 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core'
 import { Firestore, collection, collectionData, query, getDocs } from '@angular/fire/firestore'
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-app-feedback',
   templateUrl: './app-feedback.page.html',
-  styleUrls: ['./app-feedback.page.scss'],
+  styleUrls: ['./app-feedback.page.scss']
 })
 export class AppFeedbackPage implements OnInit {
   private readonly firestore: Firestore = inject(Firestore)
