@@ -1,46 +1,67 @@
 <ion-content class="app-my-comments" [fullscreen]="true">
-  <ion-card class="write-comment">
-    <ion-card-header>
-      <ion-card-title class="card-title"
-        ><ion-title class="comment-star"
-          ><i class="fa-solid fa-star"></i>4.5</ion-title
-        ><ion-title class="comment-date"
-          >Yorum Tarihi :1.09.2023</ion-title
-        ></ion-card-title
-      >
-    </ion-card-header>
+  <ng-container *ngFor="let comment of comments; let i=index">
+    <ion-card class="write-comment">
+      <ion-card-header>
+        <ion-card-title class="card-title"
+          ><ion-title class="comment-star"
+            ><i class="fa-solid fa-star"></i>4.5</ion-title
+          ><ion-title class="comment-date"
+            >Yorum Tarihi :{{comment.commentWriteDate}}</ion-title
+          ></ion-card-title
+        >
+      </ion-card-header>
 
-    <ion-card-content class="zodiac-comment">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit 🤔. Morbi
-      convallis sit amet est quis condimentum. Pellentesque vehicula purus
-      justo, non aliquet elit dapibus a. Class aptent taciti sociosqu ad litora
-      torquent per conubia nostra, per inceptos himenaeos 😨. Aenean consectetur
-      lacinia quam, ut fringilla nunc lacinia eget. Phasellus eget euismod nisl,
-      eget posuere risus. Sed placerat, est eu venenatis eleifend, augue dolor
-      tempor odio, quis pellentesque lorem lacus ac arcu 😎. Interdum et
-      malesuada fames ac ante ipsum primis in faucibus. In ultrices massa nulla,
-      feugiat venenatis mauris consectetur vel. Nam non elit justo. Fusce
-      molestie iaculis venenatis. Donec fringilla sagittis finibus 😍. Aliquam
-      egestas nisl bibendum est sollicitudin elementum. Integer ut orci metus.
-      Sed vel vehicula ipsum. Mauris nulla leo, viverra a viverra at, tincidunt
-      vitae massa. Quisque egestas erat eget nisl gravida egestas 🥰.
-    </ion-card-content>
+      <ion-card-content class="zodiac-comment">
+        {{comment.commentText}}
+      </ion-card-content>
 
-    <ion-buttons class="comments-buttons">
-      <ion-button fill="clear"><i class="fa-solid fa-star"></i></ion-button>
-      <ion-button fill="clear"><i class="fa-solid fa-eye"></i></ion-button>
-      <ion-button fill="clear" (click)="toggleDropdown()">
-        <i
-          [class]="isDropdownOpen ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"
-        ></i></ion-button
-    ></ion-buttons>
-    <ion-list class="dropdown-list" *ngIf="isDropdownOpen">
-      <ion-item class="item-info">
-        <div>
-          <p class="info">Burç Türü: Günlük</p>
-          <p class="info">İstek Tarihi: 09/20/2023</p>
-        </div>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+      <ion-buttons class="comments-buttons">
+        <ion-button fill="clear" id="feedback"
+          ><i class="fa-solid fa-star"></i
+        ></ion-button>
+        <ion-button fill="clear"><i class="fa-solid fa-eye"></i></ion-button>
+        <ion-button fill="clear" (click)="toggleDropdown(i)">
+          <i
+            [class]="isDropdownOpen[i] ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"
+          ></i></ion-button
+      ></ion-buttons>
+
+      <ion-popover class="feedback-popover" trigger="feedback" size="auto">
+        <ng-template>
+          <ion-content>
+            <form [formGroup]="feedbackForm">
+            <ion-list class="popeverlist">
+              <ion-label>Yorumcuya fikirlerini belirtmeyi unutma!</ion-label>
+              <div class="allStars">
+                <i
+                  *ngFor="let star of stars; let i = index"
+                  [ngClass]="{ 'fas': star === 'star', 'far': star === 'star-outline' }"
+                  (click)="selectStar(i)"
+                  class="fa-star rating-star"
+                ></i>
+              </div>              
+
+              <input formControlName="feedbackText" placeholder="Geri bildiriminiz:" class="feedbackInput" />
+
+              <div class="buttonDiv">
+                <ion-button class="submitButton" (click)="submitRating(comment.commentId!)"
+                  >Submit</ion-button
+                >
+              </div>
+            </ion-list>
+          </form>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+
+      <ion-list class="dropdown-list" *ngIf="isDropdownOpen[i]">
+        <ion-item class="item-info">
+          <div>
+            <p class="info">Burç Türü: Günlük</p>
+            <p class="info">İstek Tarihi: 09/20/2023</p>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ng-container>
 </ion-content>

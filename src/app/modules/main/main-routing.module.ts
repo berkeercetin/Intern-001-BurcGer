@@ -82,6 +82,10 @@ const routes: Routes = [
     path: 'write-comment',
     // eslint-disable-next-line @typescript-eslint/promise-function-async
     loadChildren: () => import('./modals/write-comment/write-comment.module').then(m => m.WriteCommentPageModule)
+  },
+  {
+    path: 'comment-view',
+    loadChildren: () => import('./modals/comment-view/comment-view.module').then( m => m.CommentViewPageModule)
   }
 
 ]
