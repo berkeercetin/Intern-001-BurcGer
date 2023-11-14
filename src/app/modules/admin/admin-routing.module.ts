@@ -32,13 +32,18 @@ const routes: Routes = [
   {
     path: 'comments',
     loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsPageModule)
-  },  {
+  },
+  {
     path: 'comment-feedback',
     loadChildren: () => import('./pages/comment-feedback/comment-feedback.module').then( m => m.CommentFeedbackPageModule)
   },
   {
     path: 'feedback',
     loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'app-feedback',
+    loadChildren: () => import('./pages/app-feedback/app-feedback.module').then( m => m.AppFeedbackPageModule)
   }
 
 

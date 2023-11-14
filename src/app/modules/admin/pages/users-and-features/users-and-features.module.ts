@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { UsersAndFeaturesPageRoutingModule } from './users-and-features-routing.module';
 
 import { UsersAndFeaturesPage } from './users-and-features.page';
+import { FilterPipe } from '../../shared/filter.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { UsersAndFeaturesPage } from './users-and-features.page';
     IonicModule,
     UsersAndFeaturesPageRoutingModule
   ],
-  declarations: [UsersAndFeaturesPage]
+  declarations: [UsersAndFeaturesPage, FilterPipe]
 })
 export class UsersAndFeaturesPageModule {}

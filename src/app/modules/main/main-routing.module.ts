@@ -89,6 +89,11 @@ const routes: Routes = [
     loadChildren: () => import('./modals/write-comment/write-comment.module').then(m => m.WriteCommentPageModule)
   },
 
+  {
+    path: 'comment-view',
+    loadChildren: () => import('./modals/comment-view/comment-view.module').then( m => m.CommentViewPageModule)
+  }
+
 ]
 
 @NgModule({
