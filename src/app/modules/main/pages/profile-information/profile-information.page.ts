@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AlertController, LoadingController } from '@ionic/angular'
 import { UserModel } from '../../models/usermodel'
+import { AuthService } from '../../services/auth.service'
+import { GlobalService } from 'src/app/shared/global.service'
 
 @Component({
   selector: 'app-profile-information',
@@ -19,11 +21,12 @@ export class ProfileInformationPage implements OnInit {
     return this.ionicForm.controls
   }
 
-  constructor (private readonly userService: UserService, private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly loadingController: LoadingController,
+  constructor (private readonly userService: UserService, private readonly formBuilder: FormBuilder, public global: GlobalService,private readonly router: Router, private readonly loadingController: LoadingController,
     private readonly alertController: AlertController) {
   }
 
   async ngOnInit () {
+    console.log(this.global.data?.user?.emailVerified)
     this.loadingController.create({
       message: 'Yükleniyor...',
       spinner: 'crescent',
@@ -52,7 +55,7 @@ export class ProfileInformationPage implements OnInit {
     this.isEdit = !this.isEdit
   }
 
-  submitForm () {
+  submitForm (input: HTMLInputElement) {
     this.isSubmitted = true
     console.log(this.ionicForm.value)
     if (this.ionicForm.valid) {
@@ -64,11 +67,39 @@ export class ProfileInformationPage implements OnInit {
         animated: true
       })
         .then(async res => { await res.present() })
-      this.userService.updateUser(this.ionicForm.value).then(async res => await this.router.navigateByUrl('/main/home')).catch(
-        err => { console.log(err) }
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      ).finally(() => { this.loadingController.dismiss() })
-    }
+        if(input){
+          const userData = new UserModel(this.ionicForm.value)
+          this.userService.uploadFile(input).then(res => {
+            
+            userData.photoUrl = res
+
+            console.log(userData)
+            this.userService.updateUser(userData).then(async res => await this.router.navigateByUrl('/main/home')).catch(
+              err => { console.log(err) }
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            ).finally(() => { this.loadingController.dismiss() })
+          })
+        }
+        else{
+          const userData = new UserModel(this.ionicForm.value)
+          this.userService.uploadFile(input).then(res => {
+            
+            userData.photoUrl = res
+
+            console.log(userData)
+            this.userService.updateUser(userData).then(async res => await this.router.navigateByUrl('/main/home')).catch(
+              err => { console.log(err) }
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            ).finally(() => { this.loadingController.dismiss() })
+          }).catch((err)=>{
+            alert('FOTOĞRAF YÜKLENEMEDİ!')
+            this.userService.updateUser(userData).then(async res => await this.router.navigateByUrl('/main/home')).catch(
+              err => { console.log(err) }
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            ).finally(() => { this.loadingController.dismiss() })
+          })
+        }
+      }
   }
 
   async fetchUser () {
@@ -81,4 +112,5 @@ export class ProfileInformationPage implements OnInit {
       console.log('No such document!')
     }
   }
+
 }

@@ -19,22 +19,22 @@ const routes: Routes = [
     children: [
       {
         path: 'register',
-        // canActivate: [AuthGuard],
-        // data: { authGuardPipe: redirectUnauthorizedToHome },
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectLoggedInToAccount },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
       },
       {
         path: 'login',
-        // canActivate: [AuthGuard],
-        // data: { authGuardPipe: redirectUnauthorizedToHome },
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectLoggedInToAccount },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
       },
       {
         path: 'forgot-password',
-        // canActivate: [AuthGuard],
-        // data: { authGuardPipe: redirectUnauthorizedToHome },
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectLoggedInToAccount },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
       },
@@ -70,7 +70,12 @@ const routes: Routes = [
         path: 'my-account',
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountPageModule)
+      } ,
+      {
+        path: 'verified-email',
+        loadChildren: () => import('./pages/verified-email/verified-email.module').then( m => m.VerifiedEmailPageModule)
       }
+
     ]
   },
   {
@@ -83,6 +88,7 @@ const routes: Routes = [
     // eslint-disable-next-line @typescript-eslint/promise-function-async
     loadChildren: () => import('./modals/write-comment/write-comment.module').then(m => m.WriteCommentPageModule)
   },
+
   {
     path: 'comment-view',
     loadChildren: () => import('./modals/comment-view/comment-view.module').then( m => m.CommentViewPageModule)
