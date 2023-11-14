@@ -3,6 +3,7 @@ import { Firestore, collection, collectionData, query, getDocs } from '@angular/
 import { LoadingController } from '@ionic/angular'
 import { Observable } from 'rxjs'
 import { UserModel } from 'src/app/modules/main/models/usermodel'
+
 import { UserService } from 'src/app/modules/main/services/user.service'
 
 @Component({
@@ -48,6 +49,7 @@ export class UsersAndFeaturesPage implements OnInit {
         // eslint-disable-next-line @typescript-eslint/promise-function-async, @typescript-eslint/no-misused-promises
         () => { this.loading = true; this.loadingController.dismiss() })
   }
+
 
   async creator (user: UserModel) {
     this.loadingController.create(
