@@ -50,7 +50,6 @@ export class UsersAndFeaturesPage implements OnInit {
         () => { this.loading = true; this.loadingController.dismiss() })
   }
 
-
   async creator (user: UserModel) {
     this.loadingController.create(
       {
