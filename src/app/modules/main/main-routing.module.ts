@@ -92,6 +92,10 @@ const routes: Routes = [
   {
     path: 'comment-view',
     loadChildren: () => import('./modals/comment-view/comment-view.module').then( m => m.CommentViewPageModule)
+  },
+  {
+    path: 'zodiac-information',
+    loadChildren: () => import('./pages/zodiac-information/zodiac-information.module').then( m => m.ZodiacInformationPageModule)
   }
 
 ]

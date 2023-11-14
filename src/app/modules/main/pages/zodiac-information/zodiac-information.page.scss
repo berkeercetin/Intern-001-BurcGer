@@ -1,0 +1,38 @@
+.title {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.subtitle{
+    padding-top: 25px;
+    color: white;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.selectList {
+    background: none;
+    width: 95%;
+    position: relative;
+    .selectBox{
+        --background: none;
+        --border-color: #281A28;
+        --inner-margin-start: 10px;
+    }
+}
+
+.buton{
+    display: flex;
+    margin-top: 16px;
+    color: #FD7E14;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+    text-align: center;
+    width: min-content;
+    background: #D9D9D9;
+    border-right: 4px solid #FD7E14;
+    border-bottom: 4px solid #FD7E14;
+}
