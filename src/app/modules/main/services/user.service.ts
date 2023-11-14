@@ -53,4 +53,12 @@ export class UserService {
   signOut () {
 
   }
+
+  async updateCreator (user: UserModel) {
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    user.contentCreator = !user.contentCreator
+    const userProfile = doc(this.firestore, 'user/' + user.uid)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-confusing-void-expression
+    return await updateDoc(userProfile, { ...user })
+  }
 }

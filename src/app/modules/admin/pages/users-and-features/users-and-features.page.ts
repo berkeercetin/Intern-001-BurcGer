@@ -3,6 +3,8 @@ import { Firestore, collection, collectionData, query, getDocs } from '@angular/
 import { LoadingController } from '@ionic/angular'
 import { Observable } from 'rxjs'
 import { UserModel } from 'src/app/modules/main/models/usermodel'
+import { UserService } from 'src/app/modules/main/services/user.service'
+
 @Component({
   selector: 'app-users-and-features',
   templateUrl: './users-and-features.page.html',
@@ -14,9 +16,9 @@ export class UsersAndFeaturesPage implements OnInit {
   loading = false
   user$?: Observable<[]>
   searchText = ''
-  user!: UserModel
-
-  constructor (private readonly loadingController: LoadingController) {}
+  constructor (private readonly userService: UserService,
+    private readonly loadingController: LoadingController
+  ) {}
 
   ionViewWillEnter () {
     this.loadingController.create(
@@ -47,10 +49,20 @@ export class UsersAndFeaturesPage implements OnInit {
         () => { this.loading = true; this.loadingController.dismiss() })
   }
 
-  contentCreator () {
-    console.log(this.user?.contentCreator)
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    this.user.contentCreator = !this.user.contentCreator
+  async creator (user: UserModel) {
+    this.loadingController.create(
+      {
+        message: 'Kaydediliyor...',
+        spinner: 'crescent',
+        animated: true
+      }
+    ).then(res => {
+      res.present()
+    })
+    console.log(user)
+    this.userService.updateCreator(user).then(() => {
+      this.loadingController.dismiss()
+    })
   }
 
   ngOnInit () {
