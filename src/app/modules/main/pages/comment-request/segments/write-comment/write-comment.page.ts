@@ -40,7 +40,7 @@ export class WriteCommentPage implements OnInit {
   }
 
   constructor (private readonly toastCtrl: ToastController, private readonly commentService: CommentService, private readonly changeDetectorRef: ChangeDetectorRef) {
-    this.commentService.getComments().subscribe(res => {
+    this.commentService.getCommentsByWriterId().subscribe(res => {
       this.comments = res
       this.changeDetectorRef.detectChanges()
       console.log(res)

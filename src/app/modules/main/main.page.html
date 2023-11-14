@@ -15,22 +15,24 @@
   </ion-toolbar>
 </ion-footer> -->
 
-<ion-header class="app-header" *ngIf="isLoginPage()">
+<ion-header class="app-header" *ngIf="isLoginPage() && user">
   <ion-toolbar class="header-toolbar" color="var(--burcger-primary-orange)">
     <ion-buttons slot="start" class="coin-button">
       <ion-button class="coins"
-        ><i class="coin-icon fa-solid fa-heart"></i> 11</ion-button
+        ><i class="coin-icon fa-solid fa-heart"></i>{{user.coin}}</ion-button
       >
     </ion-buttons>
     <ion-title class="app-title ion-text-center">BurcGer</ion-title>
     <ion-buttons slot="end">
-      <ion-button
+      <ion-button (click)="navigateToPage('/main/my-account')"
         ><div class="user">
           <div class="user-profile">
-            <img src="assets/berke.jpg" class="user-profile-photo" />
+            <img         
+            src="{{user?.photoUrl}} || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
+            class="user-profile-photo" />
           </div>
-          <i class="premium-icon fa-regular fa-gem fa-xs"></i>
-          <i class="creator-icon fa-solid fa-book fa-xs"></i></div
+          <i *ngIf="user.premium" class="premium-icon fa-regular fa-gem fa-xs"></i>
+          <i *ngIf="user.contentCreator" class="creator-icon fa-solid fa-book fa-xs"></i></div
       ></ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -40,12 +42,12 @@
   <ion-router-outlet></ion-router-outlet>
 </ion-content>
 
-<ion-tabs *ngIf="isLoginPage()">
+<ion-tabs *ngIf="isLoginPage() && user">
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
       <i class="fa-solid fa-house fa-xl"></i>
     </ion-tab-button>
-    <ion-tab-button tab="comment-request">
+    <ion-tab-button *ngIf="user.contentCreator" tab="comment-request">
       <i class="fa-solid fa-comments fa-xl"></i>
     </ion-tab-button>
     <ion-tab-button tab="explore">

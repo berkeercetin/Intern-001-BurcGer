@@ -44,10 +44,10 @@ export class UserService {
   async downloadFile () {
   }
 
-  async updateUser (form: any) {
+  async updateUser (form: UserModel) {
     const userProfile = doc(this.firestore, 'user/' + this._auth.currentUser?.uid)
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-confusing-void-expression
-    return await updateDoc(userProfile, form)
+    return await updateDoc(userProfile, {...form})
   }
 
   signOut () {

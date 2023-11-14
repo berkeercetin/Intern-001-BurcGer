@@ -1,0 +1,12 @@
+<ion-content [fullscreen]="true">
+  <div *ngIf="isVerified">
+  <ion-header>BAŞARIYLA DOĞRULANDI!</ion-header>
+  <ion-label>REFERANS KODUNUZ: {{referanceNumber}}</ion-label> 
+  <ion-button [routerLink]="['/main/home']">TAMAM</ion-button>
+  </div>
+<div *ngIf="!isVerified">
+  <ion-header>HATA</ion-header>
+  <ion-button (click)="resend()">TEKRAR DENE</ion-button>
+
+</div>
+</ion-content>

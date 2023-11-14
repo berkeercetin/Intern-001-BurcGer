@@ -21,32 +21,32 @@
     </div>
     <ng-container *ngIf='registerForm'>
       <form [formGroup]='registerForm'>
-        <ion-item class="girisyap" lines="none" style="width: 100%; justify-content: center;">
+        <ion-item lines="none" style="width: 100%; justify-content: center;">
 
           <ion-input  formControlName="name" class="input" placeholder="Ad" errorText="Adınız en az 2 karakter olmalıdır!"></ion-input>
         </ion-item>
 
-        <ion-item class="girisyap" lines="none" style="width: 100%; justify-content: center;">
+        <ion-item lines="none" style="width: 100%; justify-content: center;">
 
           <ion-input  formControlName="surname" class="input" placeholder="Soyad" errorText="Soyadınız  en az 2 karakter olmalıdır!"></ion-input>
         </ion-item>
 
-        <ion-item class="girisyap" lines="none" style="width: 100%; justify-content: center;">
+        <ion-item lines="none" style="width: 100%; justify-content: center;">
 
           <ion-input  formControlName="email" class="input" type="email" placeholder="E-Mail" errorText="Lütfen geçerli bir mail giriniz!"></ion-input>
         </ion-item>
 
-        <ion-item class="girisyap" lines="none" style="width: 100%; justify-content: center;">
+        <ion-item lines="none" style="width: 100%; justify-content: center;">
 
           <ion-input  formControlName="password" class="input" type="password" placeholder="Şifre" errorText="Şfireniz en az 6 karakterden oluşmalıdır!"></ion-input>
         </ion-item>
 
-        <ion-item class="girisyap" lines="none" style="width: 100%; justify-content: center;"style="width: 100%; justify-content: center;">
+        <ion-item lines="none" style="width: 100%; justify-content: center;">
 
           <ion-input  formControlName="passwordagain" class="input" type="password" placeholder="Şifre Tekrar" errorText="Şifreler uyuşmamaktadır."></ion-input>
         </ion-item>
 
-        <ion-list>
+        <ion-list style="--backgroung: none">
           <ion-item>
             <ion-select formControlName="gender" interface="action-sheet" placeholder="Cinsiyet">
               <ion-select-option value="Kadın">Kadın</ion-select-option>
