@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AlertController, LoadingController } from '@ionic/angular'
 import { UserModel } from '../../models/usermodel'
+import { AuthService } from '../../services/auth.service'
+import { GlobalService } from 'src/app/shared/global.service'
 
 @Component({
   selector: 'app-profile-information',
@@ -19,11 +21,12 @@ export class ProfileInformationPage implements OnInit {
     return this.ionicForm.controls
   }
 
-  constructor (private readonly userService: UserService, private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly loadingController: LoadingController,
+  constructor (private readonly userService: UserService, private readonly formBuilder: FormBuilder, public global: GlobalService,private readonly router: Router, private readonly loadingController: LoadingController,
     private readonly alertController: AlertController) {
   }
 
   async ngOnInit () {
+    console.log(this.global.data?.user?.emailVerified)
     this.loadingController.create({
       message: 'Yükleniyor...',
       spinner: 'crescent',
@@ -81,4 +84,5 @@ export class ProfileInformationPage implements OnInit {
       console.log('No such document!')
     }
   }
+
 }

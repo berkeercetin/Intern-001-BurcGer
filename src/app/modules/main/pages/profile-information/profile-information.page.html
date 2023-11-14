@@ -1,61 +1,129 @@
 <ion-content [fullscreen]="true" *ngIf="user">
   <div>
-    <ion-icon class="forBackAndEdit" name="arrow-back"></ion-icon>
-    <ion-icon style="float: right; color: #FD9843;" class="forBackAndEdit" name="brush"></ion-icon>
+    <ion-icon style="color: #d9d9d9;" class="forBackAndEdit" name="arrow-back"></ion-icon>
+    <ion-icon (click)="edit()" style="float: right; color: #FD9843;" class="forBackAndEdit" name="brush"></ion-icon>
   </div>
   <div style="text-align: center; margin-top: 19px;">
     <img
-      src="{{user?.photoUrl}} || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
-      alt="">
+      [src]="user?.photoUrl || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
+      alt="" (click)="upload.click()">
   </div>
+  <input id="fileUpload" type="file" accept="image/png" #upload style="display: none;">
   <ng-container *ngIf="ionicForm">
-    <form [formGroup]="ionicForm">
-
-
+    <form *ngIf="!isEdit" [formGroup]="ionicForm">
       <ion-label class="name">{{user.name}} {{user.surname}}</ion-label>
+      
+      <ion-list class="forBottomBorder">
+        <ion-item class="input" [disabled]="true" lines="none">
+          <ion-input class="input" formControlName="email">
+            <ion-label *ngIf="!global.data?.user?.emailVerified"><ion-icon name="alert-outline"></ion-icon> Doğrulanmamış</ion-label>
+            <ion-label *ngIf="global.data?.user?.emailVerified"><ion-icon name="checkmark-done-outline"></ion-icon>Doğrulandı</ion-label>
 
-      <ion-list>
-        <ion-item class="input" lines="none">
-          <!-- <ion-label>{{user.birthTime}}</ion-label> -->
-          <ion-input class="input" formControlName="email"></ion-input>
+          </ion-input>
         </ion-item>
       </ion-list>
 
-      <ion-list>
-        <ion-item class="input" lines="none">
-          <!-- <ion-label>{{user.birthTime}}</ion-label> -->
+      <ion-list class="forBottomBorder">
+        <ion-item class="input" [disabled]="true" lines="none">
           <ion-input class="input" formControlName="birthTime"></ion-input>
         </ion-item>
       </ion-list>
 
-      <ion-list>
-        <ion-item class="input" lines="none">
-          <!-- <ion-label>{{user.relation}}</ion-label> -->
+      <ion-list class="forBottomBorder">
+        <ion-item class="input" [disabled]="true" lines="none">
           <ion-input class="input" formControlName="relation"></ion-input>
         </ion-item>
       </ion-list>
 
-      <ion-list>
-        <ion-item class="input" lines="none">
-          <!-- <ion-label>{{user.gender}}</ion-label> -->
+      <ion-list class="forBottomBorder">
+        <ion-item class="input" [disabled]="true" lines="none">
           <ion-input class="input" formControlName="gender"></ion-input>
         </ion-item>
       </ion-list>
 
-      <ion-list>
-        <ion-item class="input" lines="none">
-          <!-- <ion-label>{{user.job}}</ion-label> -->
+      <ion-list class="forBottomBorder">
+        <ion-item class="input" [disabled]="true" lines="none">
           <ion-input class="input" formControlName="job"></ion-input>
         </ion-item>
       </ion-list>
 
-      <ion-list>
-        <ion-item class="input" lines="none">
-          <!-- <ion-label>{{user.birthPlace}}</ion-label> -->
+      <ion-list class="forBottomBorder">
+        <ion-item class="input" [disabled]="true" lines="none">
           <ion-input class="input" formControlName="birthPlace"></ion-input>
         </ion-item>
       </ion-list>
-      <ion-button (click)="submitForm()">Kaydet</ion-button>
+    </form>
+    <form *ngIf="isEdit" [formGroup]='ionicForm'>
+
+      <ion-item style="fill: outline;" lines="none" style="width: 100%; justify-content: center;">
+        <ion-input style="color: #d9d9d9;"  formControlName="name" class="input" placeholder="Ad" errorText="Adınız en az 2 karakter olmalıdır!"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" style="width: 100%; justify-content: center;">
+        <ion-input style="color: #d9d9d9;" formControlName="surname" class="input" placeholder="Soyad" errorText="Soyadınız  en az 2 karakter olmalıdır!"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" style="width: 100%; justify-content: center;">
+        <ion-input style="color: #d9d9d9;"  formControlName="email" class="input" type="email" placeholder="E-Mail" errorText="Lütfen geçerli bir mail giriniz!"></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-select style="color: #d9d9d9;"  formControlName="gender" interface="action-sheet" placeholder="Cinsiyet">
+            <ion-select-option value="Kadın">Kadın</ion-select-option>
+            <ion-select-option value="Erkek">Erkek</ion-select-option>
+            <ion-select-option value="Diğer">Belirtmek İstemiyorum</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-select style="color: #d9d9d9;"  formControlName="birthPlace" interface="action-sheet" placeholder="Dogum Yeri">
+            <ion-select-option value="Istanbul">Istanbul</ion-select-option>
+            <ion-select-option value="Artvin">Artvin</ion-select-option>
+            <ion-select-option value="Rize">Rize</ion-select-option>
+            <ion-select-option value="Sinop">Sinop</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item><ion-input style="color: #d9d9d9;"  formControlName="birthTime" type="date" placeholder="Dogum Tarihi"></ion-input></ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-select style="color: #d9d9d9;"  formControlName="relation" interface="action-sheet" placeholder="İlişki Durumu">
+            <ion-select-option value="İlişkisi Yok">İlişkisi Yok</ion-select-option>
+            <ion-select-option value="Platonik">Platonik</ion-select-option>
+            <ion-select-option value="Karmaşık">Karmaşık</ion-select-option>
+            <ion-select-option value="Flört Halinde">Flört Halinde</ion-select-option>
+            <ion-select-option value="İlişkisi Var">İlişkisi Var</ion-select-option>
+            <ion-select-option value="Yeni Ayrılmış">Yeni Ayrılmış</ion-select-option>
+            <ion-select-option value="Nişanlı">Nişanlı</ion-select-option>
+            <ion-select-option value="Evli">Evli</ion-select-option>
+            <ion-select-option value="Boşanmış">Boşanmış</ion-select-option>
+            <ion-select-option value="Dul">Dul</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-select style="color: #d9d9d9;"  formControlName="job" interface="action-sheet" placeholder="Meslek">
+            <ion-select-option value="Ev Hanımı">Ev Hanımı</ion-select-option>
+            <ion-select-option value="Çalışmıyor">Çalışmıyor</ion-select-option>
+            <ion-select-option value="Öğrenci">Öğrenci</ion-select-option>
+            <ion-select-option value="Akademisyen">Akademisyen</ion-select-option>
+            <ion-select-option value="Kendi İşini Yapıyor">Kendi İşini Yapıyor</ion-select-option>
+            <ion-select-option value="Kamu Sektörü">Kamu Sektörü</ion-select-option>
+            <ion-select-option value="Özel Sektör">Özel Sektör</ion-select-option>
+            <ion-select-option value="Emekli">Emekli</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-button (click)="submitForm()" class="buton" color="#281A28">
+        <ion-label>Kayıt Ol</ion-label>
+      </ion-button>
     </form>
   </ng-container>
 </ion-content>

@@ -70,7 +70,12 @@ const routes: Routes = [
         path: 'my-account',
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountPageModule)
+      } ,
+      {
+        path: 'verified-email',
+        loadChildren: () => import('./pages/verified-email/verified-email.module').then( m => m.VerifiedEmailPageModule)
       }
+
     ]
   },
   {
@@ -82,7 +87,7 @@ const routes: Routes = [
     path: 'write-comment',
     // eslint-disable-next-line @typescript-eslint/promise-function-async
     loadChildren: () => import('./modals/write-comment/write-comment.module').then(m => m.WriteCommentPageModule)
-  }
+  },
 
 ]
 
