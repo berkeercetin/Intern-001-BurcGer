@@ -16,10 +16,12 @@
       <ion-list class="forBottomBorder">
         <ion-item class="input" [disabled]="true" lines="none">
           <ion-input class="input" formControlName="email">
-            <ion-label *ngIf="!global.data?.user?.emailVerified"><ion-icon name="alert-outline"></ion-icon> Doğrulanmamış</ion-label>
-            <ion-label *ngIf="global.data?.user?.emailVerified"><ion-icon name="checkmark-done-outline"></ion-icon>Doğrulandı</ion-label>
-
           </ion-input>
+          <ion-label [ngStyle]="{'color': global.data?.user?.emailVerified ? 'green' : 'red'}">
+            <ion-icon [name]="global.data?.user?.emailVerified ? 'checkmark-done-outline' : 'alert-outline'"></ion-icon>
+            {{ global.data?.user?.emailVerified ? 'Doğrulanmış' : 'Doğrulanmamış'}}
+          </ion-label>
+          <!-- <ion-label *ngIf="global.data?.user?.emailVerified"><ion-icon name="checkmark-done-outline"></ion-icon>Doğrulandı</ion-label> -->
         </ion-item>
       </ion-list>
 
@@ -121,7 +123,7 @@
           </ion-select>
         </ion-item>
       </ion-list>
-      <ion-button (click)="submitForm()" class="buton" color="#281A28">
+      <ion-button (click)="submitForm(upload)" class="buton" color="#281A28">
         <ion-label>Kayıt Ol</ion-label>
       </ion-button>
     </form>

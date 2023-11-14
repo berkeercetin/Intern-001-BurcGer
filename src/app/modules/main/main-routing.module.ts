@@ -19,22 +19,22 @@ const routes: Routes = [
     children: [
       {
         path: 'register',
-        // canActivate: [AuthGuard],
-        // data: { authGuardPipe: redirectUnauthorizedToHome },
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectLoggedInToAccount },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
       },
       {
         path: 'login',
-        // canActivate: [AuthGuard],
-        // data: { authGuardPipe: redirectUnauthorizedToHome },
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectLoggedInToAccount },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
       },
       {
         path: 'forgot-password',
-        // canActivate: [AuthGuard],
-        // data: { authGuardPipe: redirectUnauthorizedToHome },
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectLoggedInToAccount },
         // eslint-disable-next-line @typescript-eslint/promise-function-async
         loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
       },
