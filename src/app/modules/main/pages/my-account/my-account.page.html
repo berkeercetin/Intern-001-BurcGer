@@ -1,13 +1,19 @@
-<ion-header style="box-shadow: none;" [translucent]="true">
+<ion-header style="box-shadow: none" [translucent]="true">
   <ion-toolbar color="transparent" class="my-profile-toolbar">
-    <ion-item class="toolbar-icon" button (click)="navigateToHome('/main/home')" slot="start"
+    <ion-item
+      class="toolbar-icon"
+      button
+      (click)="navigateToPage('/main/home')"
+      slot="start"
       ><i class="fa-solid fa-xmark"></i
     ></ion-item>
-    <ion-item class="toolbar-icon" button slot="end"><i class="fa-solid fa-bell"></i></ion-item>
+    <ion-item class="toolbar-icon" button slot="end"
+      ><i class="fa-solid fa-bell"></i
+    ></ion-item>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="app-my-profile ion-text-center">
+<ion-content class="app-my-profile ion-text-center" *ngIf="user && loading">
   <ion-title class="welcome-text">Hesabım</ion-title>
 
   <ion-item
@@ -17,13 +23,16 @@
   >
     <div class="user">
       <div class="user-profile">
-        <img src="assets/berke.jpg" class="user-profile-photo" />
+        <img
+          src="{{user?.photoUrl}} || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
+          class="user-profile-photo"
+        />
       </div>
-      <i class="premium-icon fa-regular fa-gem"></i>
-      <i class="creator-icon fa-solid fa-book"></i>
+      <i *ngIf="user.premium" class="premium-icon fa-regular fa-gem"></i>
+      <i *ngIf="user.contentCreator" class="creator-icon fa-solid fa-book"></i>
     </div>
   </ion-item>
-  <ion-text class="user-name-surname">Berke ERÇETİN</ion-text>
+  <ion-text class="user-name-surname">{{user.name}} {{user.surname}}</ion-text>
 
   <div class="burcger-box">
     <ion-item class="burcger-box-content ion-text-center">
@@ -36,16 +45,17 @@
   </div>
 
   <ng-container *ngFor="let button of buttons">
-  <div class="burcger-button">
-    <ion-item button detail class="menuBtn">
-      <i class="notification-icon {{ button.icon }}"></i>
-      {{ button.text }}
-    </ion-item>
+    <div button class="burcger-button" (click)="navigateToPage(button.route)">
+      <ion-item detail class="menuBtn">
+        <i class="notification-icon {{ button.icon }}"></i>
+        {{ button.text }}
+      </ion-item>
+    </div>
+  </ng-container>
+  <div class="log-out">
+    <ion-button class="log-out-logo ion-text-center" (click)="singOut()"
+      ><i class="fa-solid fa-right-from-bracket"></i>
+      <p class="log-out-text">Çıkış Yap</p></ion-button
+    >
   </div>
-</ng-container>
-<div class="log-out">
-  <ion-button class="log-out-logo ion-text-center"
-    ><i class="fa-solid fa-right-from-bracket"></i
-  ><p class="log-out-text">Çıkış Yap</p></ion-button>
-</div>
 </ion-content>
