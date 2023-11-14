@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore'
+import { Firestore, addDoc, collection, collectionData, doc, query, updateDoc, where } from '@angular/fire/firestore'
 import { CommentModel } from '../models/comment.model'
 import { Observable } from 'rxjs'
 
@@ -12,6 +12,25 @@ export class CommentService {
   getComments (): Observable<CommentModel[]> {
     const commnetsRef = collection(this.firestore, 'creator-comments')
     return collectionData(commnetsRef, { idField: 'commentId' }) as Observable<CommentModel[]>
+  }
+
+  getAdminComments (): Observable<CommentModel[]> {
+    const commnetsRef = collection(this.firestore, 'zodiac-comment')
+    return collectionData(commnetsRef) as Observable<CommentModel[]>
+  }
+
+  getCommentsByWriterId() {
+    const commentsRef = collection(this.firestore, 'creator-comments')
+    const q = query(commentsRef, where('commentWriterUid', '==', "asd"))
+    return collectionData(q, { idField: 'commentId'});
+  
+  }
+
+  getCommentsRequesterUid() {
+    const commentsRef = collection(this.firestore, 'creator-comments')
+    const q = query(commentsRef, where('commentRequesterUid', '==', "asd"))
+    return collectionData(q, { idField: 'commentId'});
+  
   }
 
   async addComments (comment: CommentModel) {

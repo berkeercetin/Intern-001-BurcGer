@@ -32,7 +32,8 @@ const routes: Routes = [
   {
     path: 'comments',
     loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsPageModule)
-  },  {
+  },
+  {
     path: 'comment-feedback',
     loadChildren: () => import('./pages/comment-feedback/comment-feedback.module').then( m => m.CommentFeedbackPageModule)
   },
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'app-feedback',
     loadChildren: () => import('./pages/app-feedback/app-feedback.module').then( m => m.AppFeedbackPageModule)
+  },
+  {
+    path: 'send-notification',
+    loadChildren: () => import('./pages/send-notification/send-notification.module').then( m => m.SendNotificationPageModule)
   }
 
 

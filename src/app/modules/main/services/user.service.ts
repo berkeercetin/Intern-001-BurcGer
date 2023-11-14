@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core'
 import { Auth } from '@angular/fire/auth'
 import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore'
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage'
+import { UserModel } from '../models/usermodel'
 
 @Injectable({
   providedIn: 'root'
@@ -43,13 +44,21 @@ export class UserService {
   async downloadFile () {
   }
 
-  async updateUser (form: any) {
+  async updateUser (form: UserModel) {
     const userProfile = doc(this.firestore, 'user/' + this._auth.currentUser?.uid)
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-confusing-void-expression
-    return await updateDoc(userProfile, form)
+    return await updateDoc(userProfile, {...form})
   }
 
   signOut () {
 
+  }
+
+  async updateCreator (user: UserModel) {
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    user.contentCreator = !user.contentCreator
+    const userProfile = doc(this.firestore, 'user/' + user.uid)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-confusing-void-expression
+    return await updateDoc(userProfile, { ...user })
   }
 }

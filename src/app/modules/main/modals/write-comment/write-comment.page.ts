@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms'
 })
 export class WriteCommentPage implements OnInit {
   @Input() data: CommentModel = {
+    commentWriterUid: undefined,
     commentTitle: undefined,
     commentZodiac: undefined,
     commentType: undefined,
@@ -38,6 +39,8 @@ export class WriteCommentPage implements OnInit {
 
   commentData () {
     this.commentForm = this.fb.group({
+      commentWriterUid: "asd",
+      commentRequesterUid: "asd",
       commentTitle: this.data.commentTitle,
       commentZodiac: [''],
       commentType: [''],

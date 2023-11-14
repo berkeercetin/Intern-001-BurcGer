@@ -3,13 +3,15 @@ import {
   Auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  // sendEmailVerification,
+  sendEmailVerification,
   sendPasswordResetEmail,
   User,
-  UserCredential
+  UserCredential,
+  applyActionCode
 } from '@angular/fire/auth'
 import { doc, Firestore, setDoc } from '@angular/fire/firestore'
 import { UserModel } from '../models/usermodel'
+import { GlobalService } from 'src/app/shared/global.service'
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +19,21 @@ import { UserModel } from '../models/usermodel'
 export class AuthService {
   private readonly _firestore = inject(Firestore)
   private readonly _auth = inject(Auth)
+  public globalService: GlobalService = new GlobalService()
 
-  async signup (email: string, password: string, data: any): Promise<UserCredential | User> {
+  async signup(email: string, password: string, data: any): Promise<UserCredential | User> {
     return await createUserWithEmailAndPassword(
       this._auth,
       email.trim(),
       password.trim()
-    ).then(async auth => { return await this._setUserData(auth, { ...data }) })
+    ).then(async auth => { 
+      await sendEmailVerification( auth.user)
+      return await this._setUserData(auth, { ...data })
+    })
+   
   }
 
-  async login (email: string, password: string): Promise<UserCredential> {
+  async login(email: string, password: string): Promise<UserCredential> {
     console.log(email.trim(), password.trim())
     return await signInWithEmailAndPassword(
       this._auth,
@@ -35,20 +42,34 @@ export class AuthService {
     )
   }
 
-  private async _setUserData (auth: UserCredential, user: UserModel): Promise<any> {
+  async resend(){
+    return await sendEmailVerification( this.globalService.data.user)
+  }
+
+
+
+  private async _setUserData(auth: UserCredential, user: UserModel): Promise<any> {
     const userDocRef = doc(this._firestore, `user/${auth.user.uid}`)
     console.log('sonVeri ' + user)
     user.uid = auth.user.uid
     return await setDoc(userDocRef, user).then(() => user)
   }
 
-  async resetPassword (email: string) {
+  async resetPassword(email: string) {
     await sendPasswordResetEmail(this._auth, email)
   }
 
-  getUserUid () {
+  getUserUid() {
     return this._auth.currentUser?.uid
   }
 
-  constructor () { }
+  signOut() {
+    this._auth.signOut()
+  }
+
+  async verifiedEmail(code: string){
+    return await applyActionCode(this._auth, code)
+  }
+
+  constructor() { }
 }
