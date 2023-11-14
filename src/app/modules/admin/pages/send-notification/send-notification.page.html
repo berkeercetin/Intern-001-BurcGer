@@ -1,0 +1,33 @@
+<ion-header [translucent]="true" class="header ion-no-border">
+  <ion-toolbar class="background">
+      <ion-title class="title">Bildirim Gönder</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <hr class="contentLine" style="background-color: #FD9843;">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-toolbar>
+      <ion-grid class="background options">
+        <ion-row>
+          <ion-col class="elements" size="6" size-md="4" size-lg="2">
+            <ion-item lines="none" class="text background">
+              <ion-checkbox class="checkbox" labelPlacement="end">E-Posta Gönder</ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col class="elements" size="6" size-md="4" size-lg="2">
+            <ion-item lines="none" class="text background">
+              <ion-checkbox class="checkbox" labelPlacement="end">Bildirim Gönder</ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col class="elements" size="12" size-md="4" size-lg="2">
+            <ion-item lines="none" class="text background">
+              <ion-checkbox class="checkbox" labelPlacement="end">Tarih ve Saati Ekle</ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+</ion-content>

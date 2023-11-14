@@ -9,7 +9,7 @@
       <ion-icon name="filter-outline"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
-  <hr class="contentLine" style="background-color: #FD9843;">
+  <hr class="contentLine">
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -30,8 +30,10 @@
                 <ion-label>{{ user.email }}</ion-label>
               </ion-col>
               <ion-col size="12" size-md="4" size-lg="2" class="elements">
-                <ion-icon name="checkmark"></ion-icon>
-                <ion-label>Dogrulanmis Hesap</ion-label>
+                <ion-icon *ngIf="user.verifiedEmail" name="checkmark"></ion-icon>
+                <ion-icon *ngIf="!user.verifiedEmail" name="close"></ion-icon>
+                <ion-label *ngIf="user.verifiedEmail">Dogrulanmış Hesap</ion-label>
+                <ion-label *ngIf="!user.verifiedEmail">Dogrulanmamış Hesap</ion-label>
               </ion-col>
               <ion-col size="12" size-md="4" size-lg="2" class="elements">
                 <ion-icon name="person"></ion-icon>
@@ -40,7 +42,8 @@
               </ion-col>
               <ion-col size="12" size-md="4" size-lg="2" class="elements">
                 <ion-icon name="person"></ion-icon>
-                <ion-toggle (click)="contentCreator()">Icerik Ureticisi</ion-toggle>
+                <ion-toggle *ngIf="user.contentCreator" [checked]="true" (click)="creator(user)">Icerik Ureticisi</ion-toggle>
+                <ion-toggle *ngIf="!user.contentCreator" (click)="creator(user)">Icerik Ureticisi</ion-toggle>
               </ion-col>
             </ion-row>
           </ion-grid>
