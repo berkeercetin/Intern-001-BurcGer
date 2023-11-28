@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service'
 import { Router } from '@angular/router'
 import { ModalController } from '@ionic/angular'
 import { CommentViewPage } from '../../modals/comment-view/comment-view.page'
+import { MyAccountPage } from '../../modals/my-account/my-account.page'
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,14 @@ export class HomePage implements OnInit {
   async commentViewModal () {
     const modal = await this.modalController.create({
       component:  CommentViewPage
+    })
+    void modal.present()
+    const { data } = await modal.onDidDismiss()
+    console.log(data)
+  }
+  async commentViewModal2 () {
+    const modal = await this.modalController.create({
+      component:  MyAccountPage
     })
     void modal.present()
     const { data } = await modal.onDidDismiss()

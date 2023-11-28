@@ -69,7 +69,7 @@ const routes: Routes = [
       {
         path: 'my-account',
         // eslint-disable-next-line @typescript-eslint/promise-function-async
-        loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountPageModule)
+        loadChildren: () => import('./modals/my-account/my-account.module').then(m => m.MyAccountPageModule)
       } ,
       {
         path: 'verified-email',

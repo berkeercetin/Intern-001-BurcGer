@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { Router, Event, NavigationStart, NavigationEnd } from '@angular/router'
+import { Router, NavigationStart, NavigationEnd } from '@angular/router'
 import { UserService } from '../../services/user.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-account',
@@ -9,7 +10,6 @@ import { UserService } from '../../services/user.service';
 })
 export class MyAccountPage implements OnInit {
   user!:any
-  loading:boolean=false
   buttons = [
     { icon: 'fa-regular fa-user', text: 'Hesabım', route:'/main/profile-information' },
     { icon: 'fa-regular fa-gem', text: 'Premium', route:'' },
@@ -17,16 +17,14 @@ export class MyAccountPage implements OnInit {
     { icon: 'fa-solid fa-gear', text: 'Ayarlar', route:'' }
   ];
 
-  constructor (private readonly router: Router, private readonly userService:UserService) { 
+  constructor (private readonly router: Router, private readonly userService:UserService, private readonly modalController:ModalController) { 
     router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        this.loading = true;
         console.log('Navigation started');
         // Additional logic can be added here
       }
   
       if (event instanceof NavigationEnd) {
-        this.loading = false;
         console.log('Navigation ended');
         // Additional logic can be added here
       }
@@ -35,13 +33,10 @@ export class MyAccountPage implements OnInit {
   }
 
   
-  ngOnInit () {
-    this.fetchUser()
+  async ngOnInit () {
+   this.fetchUser()
   }
 
-  singOut () {
-    this.userService.signOut()
-  }
 
   async fetchUser () {
     const docSnap = this.userService.getUser()
@@ -54,9 +49,26 @@ export class MyAccountPage implements OnInit {
     }
   }
 
+  singOut () {
+
+  }
+
+
   navigateToPage (page: string) {
     this.router.navigateByUrl(page)
       .then((res) => { console.log(res) })
       .catch(err => { console.log(err) })
+      this.modalDismiss(true)
+  }
+
+  async modalDismiss (save: boolean) {
+    this.modalController
+      .dismiss(save)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }

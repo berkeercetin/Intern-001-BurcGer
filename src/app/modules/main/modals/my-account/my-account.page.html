@@ -3,7 +3,7 @@
     <ion-item
       class="toolbar-icon"
       button
-      (click)="navigateToPage('/main/home')"
+      (click)="modalDismiss(true)"
       slot="start"
       ><i class="fa-solid fa-xmark"></i
     ></ion-item>
@@ -13,7 +13,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="app-my-profile ion-text-center" *ngIf="user && loading">
+<ion-content class="app-my-profile ion-text-center" *ngIf="user">
   <ion-title class="welcome-text">Hesabım</ion-title>
 
   <ion-item
