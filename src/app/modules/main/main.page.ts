@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { NavigationStart, Router } from '@angular/router'
 import { UserService } from './services/user.service'
+import { ModalController } from '@ionic/angular'
+import { MyAccountPage } from './modals/my-account/my-account.page'
 
 @Component({
   selector: 'app-main',
@@ -9,10 +11,24 @@ import { UserService } from './services/user.service'
 })
 export class MainPage implements OnInit {
   user!:any
-  constructor (private readonly router: Router, private userService:UserService) {}
+  showHead:boolean = true
+  constructor (private readonly router: Router, private userService:UserService, private readonly modalController:ModalController) {
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        if (event['url'] == 'main/login' || 
+        event['url'] =='/main/forgot-password' || 
+        event['url'] =='/main/register') {
+          this.showHead = false;
+        } else {
+          this.showHead = true;
+        }
+      }
+    });
+  }
 
   ngOnInit () { 
-    this.fetchUser() }
+    this.fetchUser() 
+  }
 
   navigateToPage (page: string) {
     this.router.navigateByUrl(page).then((res) => { console.log(res) }).catch(err => { console.log(err) })
@@ -29,16 +45,12 @@ export class MainPage implements OnInit {
     }
   }
 
-  isLoginPage () {
-    if (
-      this.router.url === '/main/login' ||
-      this.router.url === '/main/forgot-password' ||
-      this.router.url === '/main/register' ||
-      this.router.url === '/main/my-account'
-    ) {
-      return false
-    } else {
-      return true
-    }
+  async presentModal () {
+    const modal = await this.modalController.create({
+      component: MyAccountPage
+    })
+    void modal.present()
+    const { data } = await modal.onDidDismiss()
+    console.log(data)
   }
 }

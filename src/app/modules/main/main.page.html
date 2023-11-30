@@ -1,21 +1,4 @@
-<!-- <ion-header [translucent]="true" *ngIf="isLoginPage()">
-  <ion-toolbar>
-    <ion-title>main</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-router-outlet></ion-router-outlet>
-</ion-content>
-
-
-<ion-footer *ngIf="isLoginPage()">
-  <ion-toolbar>
-    <ion-title>Footer</ion-title>
-  </ion-toolbar>
-</ion-footer> -->
-
-<ion-header class="app-header" *ngIf="isLoginPage() && user">
+<ion-header class="app-header" *ngIf="showHead && user">
   <ion-toolbar class="header-toolbar" color="var(--burcger-primary-orange)">
     <ion-buttons slot="start" class="coin-button">
       <ion-button class="coins"
@@ -24,7 +7,7 @@
     </ion-buttons>
     <ion-title class="app-title ion-text-center">BurcGer</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="navigateToPage('/main/my-account')"
+      <ion-button (click)="presentModal()"
         ><div class="user">
           <div class="user-profile">
             <img         
@@ -42,7 +25,7 @@
   <ion-router-outlet></ion-router-outlet>
 </ion-content>
 
-<ion-tabs *ngIf="isLoginPage() && user">
+<ion-tabs *ngIf="showHead && user">
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
       <i class="fa-solid fa-house fa-xl"></i>
@@ -53,7 +36,7 @@
     <ion-tab-button tab="explore">
       <i class="fa-solid fa-globe fa-xl"></i>
     </ion-tab-button>
-    <ion-tab-button tab="my-account">
+    <ion-tab-button (click)="presentModal()">
       <i class="fa-solid fa-user fa-xl"></i>
     </ion-tab-button>
   </ion-tab-bar>
