@@ -1,14 +1,121 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>user-info</ion-title>
-    <ion-button (click)="dismiss()">X</ion-button>
+<ion-header class="user-info-header" [translucent]="true">
+  <ion-toolbar class="user-info-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()"
+        ><i class="fa-solid fa-xl fa-xmark"></i
+      ></ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)"
+        ><i class="fa-solid fa-xl fa-ellipsis"></i
+      ></ion-button>
+      <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+        <ng-template>
+          <ion-button style="color: var(--burcger-primary-purple);padding: 0px;width: 98%;" fill="clear" class="report"><i class="fa-solid fa-triangle-exclamation"></i> Şikayet Et</ion-button>
+        </ng-template>
+      </ion-popover>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">user-info</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="user-info-content" [fullscreen]="true">
+  <ion-item
+    class="user-welcome"
+    color="var(--ion-background-color);"
+    lines="none"
+  >
+    <div button class="user">
+      <div class="user-profile">
+        <img
+          [src]="user.photoUrl || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
+          class="user-profile-photo"
+        />
+      </div>
+      <i *ngIf="user.premium" class="premium-icon fa-regular fa-xl fa-gem"></i>
+      <i
+        *ngIf="user.contentCreator"
+        class="creator-icon fa-solid fa-xl fa-book"
+      ></i>
+    </div>
+  </ion-item>
+  <div class="creator-name-and-icon">
+    <ion-title> {{user.name}} {{user.surname}}</ion-title>
+    <ion-title><i class="fa-regular fa-star"></i> 4.5</ion-title>
+  </div>
+
+  <div class="creator-info">
+  <ion-text class="creator-info-text"
+    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eros nulla,
+    lobortis quis metus vitae, dictum efficitur dui. Praesent in porta purus.
+    Donec dolor ante, tincidunt ornare nulla ut, mollis porta mauris. Donec
+    iaculis, lorem sit amet commodo ullamcorper, odio sem vulputate odio, id
+    interdum magna mi a arcu. Vestibulum pellentesque ornare ipsum, ut semper
+    odio ullamcorper ac. Ut suscipit rutrum ante vel auctor. Nulla facilisi. Sed
+    dignissim imperdiet vehicula. Nulla tincidunt tempus mattis. Pellentesque
+    congue ex at ligula semper, ac tincidunt nunc viverra. Duis ac lacinia leo.
+    Pellentesque aliquam eget nisl eget scelerisque. Nulla vel lorem eu lorem
+    venenatis malesuada a at nunc. Maecenas libero neque, maximus in nulla a,
+    sollicitudin maximus risus. Suspendisse venenatis odio vitae dolor interdum,
+    id interdum purus ornare.</ion-text
+  >
+</div>
+  <ion-item class="select-and-buy">
+    <ion-buttons slot="start">
+      <ion-button id="open-picker"><ion-text></ion-text>Tip:{{selectedTextType}}</ion-button>
+    </ion-buttons>
+    <ion-picker
+      trigger="open-picker"
+      [columns]="pickerColumns"
+      [buttons]="pickerButtons"
+    ></ion-picker>
+    <ion-buttons slot="end">
+      <ion-button>Fiyat:{{price}}₺</ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <div class="app-written">
+    <ion-title>Kullanıcı Yorumları</ion-title>
+    <div class="written-dropdown">
+      <ion-item-sliding class="asd" (click)="toggleDropdown()">
+        <ion-item class="comment-info">
+          <ion-label class="info"> Lorem ipsum dolor sit amet 🍋🍋 </ion-label>
+          <i
+            [class]="isDropdownOpen ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"
+          ></i>
+        </ion-item>
+        <div
+          class="zodiac-comment"
+          [ngClass]="{'zodiac-comment-expanded': isDropdownOpen}"
+        >
+          <ion-text
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            suscipit leo at augue luctus vulputate. Nullam vitae enim in leo
+            ultrices ullamcorper sed id risus. Donec tincidunt, dui in fringilla
+            semper, mauris massa tristique purus, non tristique nisi eros non
+            nisi. Ut aliquet tincidunt nunc, a molestie elit cursus in. Ut
+            finibus porta nulla, at egestas sapien vehicula eu. Praesent vitae
+            nisl quis diam ultrices finibus. Nam est urna, maximus eu dapibus
+            quis, commodo nec magna. Quisque finibus dolor nec sagittis maximus.
+            Maecenas sed molestie nibh, sed euismod diam. Praesent accumsan a
+            tortor et consectetur.</ion-text
+          >
+        </div>
+      </ion-item-sliding>
+      <ion-list class="list-info" *ngIf="isDropdownOpen">
+        <div class="zodiac-type">
+          <ion-label class="info"> Günlük Yorum </ion-label>
+        </div>
+        <ion-item-sliding class="user-date">
+          <div class="User-info">
+            <i class="fa-solid fa-user"></i>
+            <ion-label class="info"> Berke ERÇETİN </ion-label>
+          </div>
+          <div class="date-info">
+            <i class="fa-solid fa-calendar"></i>
+            <ion-label class="info"> 10/21/2023 </ion-label>
+          </div>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>
