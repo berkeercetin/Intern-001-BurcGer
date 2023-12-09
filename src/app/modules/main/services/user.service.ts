@@ -49,8 +49,4 @@ export class UserService {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-confusing-void-expression
     return await updateDoc(userProfile, {...form})
   }
-
-  signOut () {
-
-  }
 }

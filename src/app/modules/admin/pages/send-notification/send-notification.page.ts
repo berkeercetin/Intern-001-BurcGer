@@ -3,7 +3,7 @@ import { Firestore, collection, collectionData, query, getDocs } from '@angular/
 import { LoadingController } from '@ionic/angular'
 import { Observable } from 'rxjs'
 import { UserService } from 'src/app/modules/main/services/user.service'
-import { NotificationService } from '../../services/notification.service'
+import { LocalNotifications } from '@capacitor/local-notifications'
 @Component({
   selector: 'app-send-notification',
   templateUrl: './send-notification.page.html',
@@ -17,13 +17,13 @@ export class SendNotificationPage implements OnInit {
   mesaj: string = ''
 
   constructor (private readonly userService: UserService,
-    private readonly loadingController: LoadingController,
-    private readonly notificationService: NotificationService
+    private readonly loadingController: LoadingController
   ) { }
 
-  setUserMessageAndNotify () {
-    this.notificationService.setUserMessage(this.mesaj)
-    this.notificationService.sendNotification()
+  async setUserMessageAndNotify () {
+    await LocalNotifications.checkPermissions().then((status) => { console.log(status.display); LocalNotifications.schedule({ notifications: [{ title: 'Title', body: 'Body', id: 1 }] }).then((res) => { console.log(res.notifications) }) }).catch((e) => {
+      LocalNotifications.requestPermissions().then(() => { LocalNotifications.schedule({ notifications: [{ title: 'Title', body: 'Body', id: 1 }] }).then(() => { console.log('ok') }) })
+    })
   }
 
   ngOnInit () {
