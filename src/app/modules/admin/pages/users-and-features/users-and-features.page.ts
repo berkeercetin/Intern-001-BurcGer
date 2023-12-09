@@ -1,10 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core'
-import { Firestore, collection, collectionData, query, getDocs } from '@angular/fire/firestore'
+import { Component, OnInit } from '@angular/core'
 import { LoadingController } from '@ionic/angular'
-import { Observable } from 'rxjs'
 import { UserModel } from 'src/app/modules/main/models/usermodel'
-
-import { UserService } from 'src/app/modules/main/services/user.service'
+import { UserService } from '../../services/user.service'
 
 @Component({
   selector: 'app-users-and-features',
@@ -12,10 +9,8 @@ import { UserService } from 'src/app/modules/main/services/user.service'
   styleUrls: ['./users-and-features.page.scss']
 })
 export class UsersAndFeaturesPage implements OnInit {
-  private readonly firestore: Firestore = inject(Firestore)
-  users: any[] = []
+  users: any
   loading = false
-  user$?: Observable<[]>
   searchText = ''
   constructor (private readonly userService: UserService,
     private readonly loadingController: LoadingController
@@ -30,42 +25,38 @@ export class UsersAndFeaturesPage implements OnInit {
       }
     ).then(res => {
       res.present()
-    })
-    const userFeaturesCollection = collection(this.firestore, 'user')
-    this.user$ = collectionData(userFeaturesCollection) as Observable<[]>
-    const featuresQuery = query(userFeaturesCollection) as any
-
-    getDocs(featuresQuery)
-      .then(
-        res => {
-          console.log(res.docs.map(doc => doc.data()))
-          this.users = res.docs.map(doc => doc.data())
-        }
-      )
-      .catch((err: any) => {
-        console.error(err)
+      this.getUsers().finally(() => {
+        this.loadingController.dismiss()
       })
-      .finally(
-        // eslint-disable-next-line @typescript-eslint/promise-function-async, @typescript-eslint/no-misused-promises
-        () => { this.loading = true; this.loadingController.dismiss() })
+    })
   }
 
-  async creator (user: UserModel) {
-    this.loadingController.create(
-      {
-        message: 'Kaydediliyor...',
-        spinner: 'crescent',
-        animated: true
-      }
-    ).then(res => {
+  async getUsers () {
+    await this.userService.getUsers().then(res => {
+      console.log(res.docs.map(doc => doc.data()))
+      this.users = res.docs.map(doc => doc.data())
+    }
+    )
+  }
+
+  creator (user: UserModel) {
+    this.loadingController.create({
+      message: 'Kaydediliyor...',
+      spinner: 'crescent',
+      animated: true
+    }).then(res => {
       res.present()
     })
+
     console.log(user)
+
     this.userService.updateCreator(user).then(() => {
+      // this.getUsers().finally(() => {
+      //   this.loadingController.dismiss()
+      // })
       this.loadingController.dismiss()
     })
   }
 
-  ngOnInit () {
-  }
+  ngOnInit () {}
 }

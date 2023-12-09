@@ -31,8 +31,8 @@
       </ion-grid>
 
       <ion-item class="items background">
-        <ion-select label="Bildirim gönderilecek kullanıcılar">
-          <ion-select-option value="apple">Apple</ion-select-option>
+        <ion-select placeholder="Bildirim gönderilecek kullanıcılar">
+          <ion-select-option *ngFor="let user of users" value="{{user.name}} {{user.surname}}">{{user.name}} {{user.surname}}</ion-select-option>
         </ion-select>
       </ion-item>
 
