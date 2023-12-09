@@ -51,10 +51,10 @@ export class UsersAndFeaturesPage implements OnInit {
     console.log(user)
 
     this.userService.updateCreator(user).then(() => {
-      // this.getUsers().finally(() => {
-      //   this.loadingController.dismiss()
-      // })
-      this.loadingController.dismiss()
+      this.getUsers().finally(() => {
+        this.loadingController.dismiss()
+      })
+      // this.loadingController.dismiss()
     })
   }
 
