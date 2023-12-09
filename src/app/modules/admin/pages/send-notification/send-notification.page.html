@@ -41,8 +41,9 @@
       </ion-item>
 
       <ion-item lines="none" class="subject items background">
-        <ion-textarea style="height: 16rem;" labelPlacement="floating" label="Konu" color="dark" [autoGrow]="true"></ion-textarea>
-        <ion-icon name="save"></ion-icon>
+        <ion-textarea style="height: 16rem;" labelPlacement="floating" [(ngModel)]="mesaj" label="Konu" color="dark" [autoGrow]="true"></ion-textarea>
       </ion-item>
+
+      <ion-button (click)="setUserMessageAndNotify()">Bildirim Gönder</ion-button>
     </ion-toolbar>
 </ion-content>

@@ -3,6 +3,7 @@ import { Firestore, collection, collectionData, query, getDocs } from '@angular/
 import { LoadingController } from '@ionic/angular'
 import { Observable } from 'rxjs'
 import { UserService } from 'src/app/modules/main/services/user.service'
+import { NotificationService } from '../../services/notification.service'
 @Component({
   selector: 'app-send-notification',
   templateUrl: './send-notification.page.html',
@@ -13,9 +14,17 @@ export class SendNotificationPage implements OnInit {
   users: any[] = []
   loading = false
   user$?: Observable<[]>
+  mesaj: string = ''
 
   constructor (private readonly userService: UserService,
-    private readonly loadingController: LoadingController) { }
+    private readonly loadingController: LoadingController,
+    private readonly notificationService: NotificationService
+  ) { }
+
+  setUserMessageAndNotify () {
+    this.notificationService.setUserMessage(this.mesaj)
+    this.notificationService.sendNotification()
+  }
 
   ngOnInit () {
   }

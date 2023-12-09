@@ -6,11 +6,6 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https'
-  },
-  plugins: {
-    pushNotifications: {
-      presentationOptions: ['badge', 'sound', 'alert']
-    }
   }
 }
 
