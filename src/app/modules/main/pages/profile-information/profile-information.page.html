@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" *ngIf="user">
   <div>
-    <ion-icon style="color: #d9d9d9;" class="forBackAndEdit" name="arrow-back"></ion-icon>
+    <ion-icon style="color: #d9d9d9;" class="forBackAndEdit" name="arrow-back" [routerLink]="['/main/my-account']"></ion-icon>
     <ion-icon (click)="edit()" style="float: right; color: #FD9843;" class="forBackAndEdit" name="brush"></ion-icon>
   </div>
   <div style="text-align: center; margin-top: 19px;">

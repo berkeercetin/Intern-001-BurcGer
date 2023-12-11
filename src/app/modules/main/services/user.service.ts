@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core'
 import { Auth } from '@angular/fire/auth'
-import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore'
+import { Firestore, collection, doc, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore'
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage'
 import { UserModel } from '../models/usermodel'
 
@@ -48,5 +48,14 @@ export class UserService {
     const userProfile = doc(this.firestore, 'user/' + this._auth.currentUser?.uid)
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-confusing-void-expression
     return await updateDoc(userProfile, {...form})
+  }
+
+  async getUsersByContentCreator(): Promise<any[]> {
+    const usersRef = collection(this.firestore, 'user');
+    const q = query(usersRef, where('contentCreator', '==', true));
+
+    const querySnapshot = await getDocs(q);
+
+    return querySnapshot.docs.map((doc) => doc.data());
   }
 }
