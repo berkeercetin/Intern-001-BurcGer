@@ -1,3 +1,5 @@
+import { ZodiacModel } from "./zodiac.model"
+
 export class UserModel {
   name?: string
   surname?: string
@@ -14,6 +16,7 @@ export class UserModel {
   coin?: number
   premiumTest?: boolean
   referanceNumber?: number
+  zodiacs?: string[]
 
   constructor (data?: any) {
     this.name = data?.name || ''
@@ -21,7 +24,7 @@ export class UserModel {
     this.email = data?.email || ''
     this.gender = data?.gender || ''
     this.birthPlace = data?.birthPlace || ''
-    this.birthTime = new Date(data?.birthTime).toISOString() || ''
+    this.birthTime = data?.birthTime || ''
     this.relation = data?.relation || ''
     this.job = data?.job || ''
     this.photoUrl = data?.photoUrl || ''
@@ -31,5 +34,6 @@ export class UserModel {
     this.premiumTest = false
     this.uid = data?.uid || ''
     this.referanceNumber = data?.referanceNumber || 0
+    this.zodiacs = data?.zodiacs || []
   }
 }

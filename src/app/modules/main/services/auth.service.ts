@@ -9,9 +9,10 @@ import {
   UserCredential,
   applyActionCode
 } from '@angular/fire/auth'
-import { doc, Firestore, setDoc } from '@angular/fire/firestore'
+import { addDoc, collection, doc, Firestore, setDoc, updateDoc } from '@angular/fire/firestore'
 import { UserModel } from '../models/usermodel'
 import { GlobalService } from 'src/app/shared/global.service'
+import { ZodiacModel } from '../models/zodiac.model'
 
 @Injectable({
   providedIn: 'root'
@@ -71,5 +72,16 @@ export class AuthService {
     return await applyActionCode(this._auth, code)
   }
 
-  constructor() { }
+
+
+  constructor(public firestore: Firestore) { }
+
+  async addZodiacInformation(zodiacs: ZodiacModel[], myUser: UserModel): Promise<any> {
+    let user = this.globalService.data.user
+
+    const userDocRef = doc(this._firestore,'/user/'+ user.uid )
+    console.log('sonVeri ' + myUser)
+    return await updateDoc(userDocRef, {...myUser}).then(() => myUser)
+  }
+  
 }

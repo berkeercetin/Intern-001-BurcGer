@@ -58,4 +58,5 @@ export class UserService {
 
     return querySnapshot.docs.map((doc) => doc.data());
   }
+
 }
