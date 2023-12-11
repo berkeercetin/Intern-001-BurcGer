@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Router, NavigationStart, NavigationEnd } from '@angular/router'
-import { UserService } from '../../services/user.service';
-import { ModalController } from '@ionic/angular';
+import { UserService } from '../../services/user.service'
+import { ModalController } from '@ionic/angular'
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-my-account',
@@ -9,34 +10,31 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./my-account.page.scss']
 })
 export class MyAccountPage implements OnInit {
-  user!:any
+  user!: any
   buttons = [
-    { icon: 'fa-regular fa-user', text: 'Hesabım', route:'/main/profile-information' },
-    { icon: 'fa-regular fa-gem', text: 'Premium', route:'' },
-    { icon: 'fa-solid fa-coins', text: 'Jeton', route:'' },
-    { icon: 'fa-solid fa-gear', text: 'Ayarlar', route:'' }
-  ];
+    { icon: 'fa-regular fa-user', text: 'Hesabım', route: '/main/profile-information' },
+    { icon: 'fa-regular fa-gem', text: 'Premium', route: '' },
+    { icon: 'fa-solid fa-coins', text: 'Jeton', route: '' },
+    { icon: 'fa-solid fa-gear', text: 'Ayarlar', route: '' }
+  ]
 
-  constructor (private readonly router: Router, private readonly userService:UserService, private readonly modalController:ModalController) { 
+  constructor (private readonly router: Router, private readonly userService: UserService, private readonly modalController: ModalController, private readonly authService: AuthService) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        console.log('Navigation started');
+        console.log('Navigation started')
         // Additional logic can be added here
       }
-  
+
       if (event instanceof NavigationEnd) {
-        console.log('Navigation ended');
+        console.log('Navigation ended')
         // Additional logic can be added here
       }
-    });
-
+    })
   }
 
-  
   async ngOnInit () {
-   this.fetchUser()
+    this.fetchUser()
   }
-
 
   async fetchUser () {
     const docSnap = this.userService.getUser()
@@ -50,15 +48,17 @@ export class MyAccountPage implements OnInit {
   }
 
   singOut () {
-
+    // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+    this.authService.signOut().then(() => {
+      this.navigateToPage('/main/login')
+    })
   }
-
 
   navigateToPage (page: string) {
     this.router.navigateByUrl(page)
       .then((res) => { console.log(res) })
       .catch(err => { console.log(err) })
-      this.modalDismiss(true)
+    this.modalDismiss(true)
   }
 
   async modalDismiss (save: boolean) {

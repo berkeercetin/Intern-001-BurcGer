@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card class="feedbackCard" *ngFor="let user of users | filter: searchText">
+  <ion-card class="feedbackCard" *ngFor="let user of users | filter: searchText" >
     <ion-accordion-group>
       <ion-accordion value="first" class="background">
 
@@ -42,9 +42,10 @@
               </ion-col>
               <ion-col size="12" size-md="4" size-lg="2" class="elements">
                 <ion-icon name="person"></ion-icon>
-                <ion-toggle *ngIf="user.contentCreator" [checked]="true">Icerik Ureticisi</ion-toggle>
-                <ion-toggle *ngIf="!user.contentCreator">Icerik
-                  Ureticisi</ion-toggle>
+                <!-- <ion-toggle *ngIf="!user.contentCreator" [checked]="false" (click)="creator(user)">Icerik Ureticisi</ion-toggle>
+                <ion-toggle *ngIf="user.contentCreator" [checked]="true" (click)="creator(user)">Icerik Ureticisi</ion-toggle>  -->
+                <!-- <ion-toggle [(ngModel)]="!user.creator" (click)="creator(user)">Icerik Ureticisi</ion-toggle> -->
+                <ion-toggle [checked]="user.contentCreator ? true : false" (click)="creator(user)">Icerik Ureticisi</ion-toggle>
 
               </ion-col>
             </ion-row>

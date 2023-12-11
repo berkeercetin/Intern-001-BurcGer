@@ -64,7 +64,7 @@ export class AuthService {
   }
 
   signOut() {
-    this._auth.signOut()
+    return this._auth.signOut()
   }
 
   async verifiedEmail(code: string){
