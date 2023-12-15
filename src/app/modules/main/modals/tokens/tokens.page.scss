@@ -1,0 +1,131 @@
+.tokens-toolbar {
+  --min-height: 24px;
+  .toolbar-icon {
+    --background: transparent;
+    --border-style: none;
+    --min-height: 24px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }
+}
+
+.tokens-content {
+  --background: var(--burcger-background-color) url("/assets/Image.png")
+    no-repeat top center;
+
+  .tokens-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .coins {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-block: 10px;
+
+      .coins-div {
+        gap: 8px;
+        height: 50px;
+        width: auto;
+        padding-inline: 8px;
+        display: flex;
+        z-index: -1;
+        border: 2px solid rgba(33, 0, 255, 0.4705882353);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.23);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        align-items: center;
+        justify-content: center;
+        }
+      
+      .coin-icon {
+        color: var(--burcger-primary-purple);
+      }
+      .coin-text {
+        font-size: 22px;
+        color: var(--burcger-primary-orange);
+        font-weight: bolder;
+      }
+    }
+    .you-want-more {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .divider {
+      width: 80%;
+      border-color: var(--burcger-primary-orange);
+      height: 2px;
+    }
+
+    .buton {
+      display: flex;
+      margin-top: 16px;
+      color: #fd7e14;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 6px;
+      text-align: center;
+      width: min-content;
+      background: #d9d9d9;
+      border-right: 4px solid #fd7e14;
+      border-bottom: 4px solid #fd7e14;
+    }
+
+    .get-premium {
+      display: flex;
+      margin-inline: 15px;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      .burcger-button {
+        margin-block: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .menuBtn {
+          font-family: Inter;
+          font-size: 12px;
+          --padding-end: 0;
+          --padding-start: 0;
+          --background: var(--burcger-background-color);
+          --border-radius: 4px;
+          width: 250px;
+          --min-height: 32px;
+          position: relative;
+          border-radius: 4px; /* Apply border radius */
+          padding: 2px; /* Adjust padding as needed */
+          background: var(--burcger-linear-color); /* Apply linear gradient */
+          color: white; /* Text color */
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: -4px; /* Adjust the negative top value to create a border effect */
+            right: -4px; /* Adjust the negative right value to create a border effect */
+            bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+            left: -4px; /* Adjust the negative left value to create a border effect */
+            border: 2px solid transparent; /* Set a transparent border */
+            border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+          }
+          .notification-icon {
+            margin-left: 8px;
+            margin-right: 4px;
+          }
+          .button-text {
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

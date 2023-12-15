@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { NavigationStart, Router } from '@angular/router'
+import { NavigationEnd, NavigationStart, Router } from '@angular/router'
 import { UserService } from './services/user.service'
 import { ModalController } from '@ionic/angular'
 import { MyAccountPage } from './modals/my-account/my-account.page'
+import { TokensPage } from './modals/tokens/tokens.page'
 
 @Component({
   selector: 'app-main',
@@ -12,15 +13,18 @@ import { MyAccountPage } from './modals/my-account/my-account.page'
 export class MainPage implements OnInit {
   user!:any
   showHead:boolean = true
+  navigationStack: boolean[] = [];
+
   constructor (private readonly router: Router, private userService:UserService, private readonly modalController:ModalController) {
     router.events.forEach((event) => {
-      if (event instanceof NavigationStart) {
-        if (event['url'] == 'main/login' || 
-        event['url'] =='/main/forgot-password' || 
-        event['url'] =='/main/register') {
+      if (event instanceof NavigationStart || event instanceof NavigationEnd) {
+        if (event['url'] === 'main/login' ||
+         event['url'] === '/main/forgot-password' || 
+         event['url'] === '/main/notification' || 
+         event['url'] === '/main/register') {
           this.showHead = false;
         } else {
-          this.showHead = true;
+          this.showHead = true
         }
       }
     });
@@ -45,12 +49,19 @@ export class MainPage implements OnInit {
     }
   }
 
-  async presentModal () {
+  async myAccountmodal () {
     const modal = await this.modalController.create({
       component: MyAccountPage
     })
     void modal.present()
     const { data } = await modal.onDidDismiss()
     console.log(data)
+  }
+
+  async tokenModal() {
+    const modal = await this.modalController.create({
+      component: TokensPage
+    });
+    return await modal.present();
   }
 }

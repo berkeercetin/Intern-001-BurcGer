@@ -74,6 +74,10 @@ const routes: Routes = [
       {
         path: 'verified-email',
         loadChildren: () => import('./pages/verified-email/verified-email.module').then( m => m.VerifiedEmailPageModule)
+      },
+      {
+        path: 'notification',
+        loadChildren: () => import('./pages/notification/notification.module').then( m => m.NotificationPageModule)
       }
 
     ]
@@ -96,7 +100,19 @@ const routes: Routes = [
   {
     path: 'zodiac-information',
     loadChildren: () => import('./pages/zodiac-information/zodiac-information.module').then( m => m.ZodiacInformationPageModule)
-  }
+  },
+  {
+    path: 'tokens',
+    loadChildren: () => import('./modals/tokens/tokens.module').then( m => m.TokensPageModule)
+  },
+  {
+    path: 'share-and-win',
+    loadChildren: () => import('./modals/share-and-win/share-and-win.module').then( m => m.ShareAndWinPageModule)
+  },
+  {
+    path: 'premium',
+    loadChildren: () => import('./modals/premium/premium.module').then( m => m.PremiumPageModule)
+  },
 
 ]
 

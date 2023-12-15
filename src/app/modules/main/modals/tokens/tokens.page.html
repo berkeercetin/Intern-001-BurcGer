@@ -1,0 +1,59 @@
+<ion-header style="box-shadow: none" [translucent]="true">
+  <ion-toolbar color="transparent" class="tokens-toolbar">
+    <ion-item
+      class="toolbar-icon"
+      button
+      (click)="modalDismiss(true)"
+      slot="start"
+      ><i class="fa-solid fa-lg fa-xmark"></i
+    ></ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="tokens-content" [fullscreen]="true">
+  <ion-grid class="tokens-grid">
+    <ion-row class="coins">
+      <div class="coins-div">
+      <i class="coin-icon fa-solid fa-2xl fa-heart"></i
+      ><ion-label class="coin-text">{{user!.coin}}</ion-label>
+    </div>
+    </ion-row>
+    <ion-row class="you-want-more">
+      <ion-label>Daha fazla jeton kazanmak istiyorsan</ion-label>
+      <i class="fa-solid fa-lg fa-bounce fa-arrow-down"></i>
+    </ion-row>
+    <ion-row>
+      <ion-button class="buton" color="#281A28">
+        <ion-label>Reklam izle 1 jeton kazan</ion-label>
+      </ion-button>
+      <ion-button (click)="presentModal()" class="buton" color="#281A28">
+        <ion-label>Paylaş Kazan</ion-label>
+      </ion-button>
+    </ion-row>
+
+    <hr width="90%" color="#FD9843" style="height: 2px; border-radius: 2px" />
+
+    <ion-row class="get-premium" *ngIf="!user!.premium; else premiumSection">
+      <ion-text>Premium olarak her hafta 20 jeton kazanabilirsin</ion-text>
+      <div button class="burcger-button" (click)="premiumModal()">
+        <ion-item detail class="menuBtn">
+          <i class="notification-icon fa-regular fa-xl fa-star"></i>
+          <ion-text class="button-text"> Premium Ol</ion-text>
+        </ion-item>
+      </div>
+    </ion-row>
+    
+    <ng-template #premiumSection>
+      <ion-row class="get-premium">
+        <ion-text>Premium Dünyasına Hoşgeldin!</ion-text>
+        <div button class="burcger-button" (click)="premiumModal()">
+          <ion-item detail class="menuBtn">
+            <i class="notification-icon fa-solid fa-xl fa-star"></i>
+            <ion-text class="button-text"> Ayrıcalıklarına göz at</ion-text>
+          </ion-item>
+        </div>
+      </ion-row>
+    </ng-template>
+    
+  </ion-grid>
+</ion-content>

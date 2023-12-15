@@ -1,5 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ModalController, NavParams, PickerController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
+import { CommentService } from '../../services/comment.service';
+import { CommentReqModel } from '../../models/commentReq.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { GlobalService } from 'src/app/shared/global.service';
 
 @Component({
   selector: 'app-user-info',
@@ -9,25 +13,49 @@ import { ModalController, NavParams, PickerController } from '@ionic/angular';
 export class UserInfoPage implements OnInit {
   @ViewChild('popover') popover:any
   @Input() user: any
+  @Input() commentReqModel: CommentReqModel = {}
   a = 1
   price: any
   selectedTextType: string | undefined
   isDropdownOpen: boolean = false
   isOpen = false;
+  now = new Date()
 
   constructor(
     private readonly modalController: ModalController,
-    private navParams: NavParams,
-    private readonly pickerCtrl: PickerController
+    private readonly navParams: NavParams,
+    private readonly commentService: CommentService,
+    private readonly globalService: GlobalService,
+    private readonly formBuilder:FormBuilder
   ) {
     this.selectedTextType = this.pickerColumns[0].options[0].text;
     this.price = this.pickerColumns[0].options[0].value;
     this.user = this.navParams.get('user');
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    console.log(this.globalService.data.userID)
   }
 
+
+  // commentData () {
+  //   this.commentReqModel = this.formBuilder.group({
+  //     commentWriterUid: this.user.uid,
+  //     commentRequesterUid: this.globalService.data.user.uid,
+  //     commentStar: '0.0',
+  //     commentWriteDate: this.now.toLocaleDateString(),
+  //     commentText: this.data.commentText,
+  //     commentDay: this.data.commentDay,
+  //     commentWeek: this.data.commentWeek,
+  //     commentMonth: this.data.commentMonth,
+  //     commentYear: this.data.commentYear,
+  //     burImg: this.data.burImg
+  //   })
+  // }
+
+  // requestComment() {
+  //   this.commentService.addCommentRequest(asd)
+  // }
 
 
   presentPopover(e: Event) {

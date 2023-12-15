@@ -1,0 +1,180 @@
+.premium-toolbar {
+  --min-height: 24px;
+
+  .toolbar-icon {
+    --background: transparent;
+    --border-style: none;
+    --min-height: 24px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }
+}
+
+.premium-content {
+  --background: var(--burcger-background-color) url("/assets/Image (2).png")
+    no-repeat top center;
+
+  .welcome-text {
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+  .get-premium-buttons {
+    text-align: center;
+    margin-inline: 15px;
+
+    .burcger-button {
+      margin-block: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .menuBtn {
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: bold;
+        --background: var(--burcger-background-color);
+        --border-radius: 4px;
+        width: 190px;
+        --min-height: 32px;
+        position: relative;
+        border-radius: 4px; /* Apply border radius */
+        padding: 2px; /* Adjust padding as needed */
+        background: var(--burcger-linear-color); /* Apply linear gradient */
+        color: white; /* Text color */
+      }
+      .selected-button {
+        background: green !important;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: bold;
+        --background: var(--burcger-background-color);
+        --border-radius: 4px;
+        width: 190px;
+        --min-height: 32px;
+        position: relative;
+        border-radius: 4px; /* Apply border radius */
+        padding: 2px; /* Adjust padding as needed */
+        color: white; /* Text color */
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -4px; /* Adjust the negative top value to create a border effect */
+        right: -4px; /* Adjust the negative right value to create a border effect */
+        bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+        left: -4px; /* Adjust the negative left value to create a border effect */
+        border: 2px solid transparent; /* Set a transparent border */
+        border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+      }
+      .notification-icon {
+        margin-left: 8px;
+        margin-right: 4px;
+      }
+      .button-text {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+
+    .overline {
+      text-decoration: line-through;
+      font-size: 0.85em; /* Adjust the font size as needed */
+    }
+  }
+
+  ion-fab-button {
+    --background: var(--burcger-primary-orange);
+    --background-activated: var(--burcger-primary-purple);
+    --border-radius: 15px;
+  }
+
+  .premiumTrue {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .burcger-box-content {
+      --inner-padding-end: 0;
+      font-family: Inter;
+      font-size: 12px;
+      --padding-end: 0;
+      --padding-start: 0;
+      --background: var(--burcger-background-color);
+      --border-radius: 4px;
+      width: auto;
+      --min-height: 64px;
+      position: relative;
+      border-radius: 4px; /* Apply border radius */
+      padding: 2px; /* Adjust padding as needed */
+      background: var(--burcger-linear-color); /* Apply linear gradient */
+      color: white; /* Text color */
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -4px; /* Adjust the negative top value to create a border effect */
+        right: -4px; /* Adjust the negative right value to create a border effect */
+        bottom: -4px; /* Adjust the negative bottom value to create a border effect */
+        left: -4px; /* Adjust the negative left value to create a border effect */
+        border: 2px solid transparent; /* Set a transparent border */
+        border-radius: 8px; /* Adjust the border radius to match the button border radius + border width */
+      }
+      .box-info {
+        display: flex;
+        font-size: 20px;
+        flex-direction: column;
+        margin-left: 8px;
+        margin-right: 4px;
+
+        ion-title {
+          text-decoration: underline;
+        }
+
+        p {
+          font-size: 24px;
+          font-family: Arial, Helvetica, sans-serif;
+          background: var(--burcger-linear-color);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+      .chance {
+        gap: 6px;
+        display: flex;
+        font-size: 12px;
+        align-items: center;
+        flex-direction: row;
+        margin-right: 12px;
+      }
+    }
+
+    .premium-cancel {
+      gap: 3px;
+      display: flex;
+      font-size: 10px;
+      flex-direction: row;
+      align-items: center;
+
+      p {
+        color: var(--burcger-primary-purple);
+        text-decoration-line: underline;
+      }
+    }
+
+    .warning-text {
+      text-align: center;
+      font-size: 10px;
+      position: absolute;
+      bottom: 10px;
+       
+      p {
+        text-decoration: underline;
+        margin: 2px;
+      }
+    }
+  }
+}

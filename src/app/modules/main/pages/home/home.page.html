@@ -5,7 +5,7 @@
     color="var(--ion-background-color);"
     lines="none"
   >
-    <div button class="user" (click)="commentViewModal2()">
+    <div button class="user" (click)="myProfileModal()">
       <div class="user-profile">
         <img       
         [src]="user.photoUrl || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
@@ -17,7 +17,7 @@
   </ion-item>
 
   <div *ngIf="user.contentCreator" class="burcger-button">
-  <ion-item button detail class="menuBtn">
+  <ion-item button detail class="menuBtn" (click)="navigateToPage('main/comment-request')">
     <i class="notification-icon fa-regular fa-bell"></i>
   2 yeni yorumlama isteği
   </ion-item>
@@ -34,22 +34,22 @@
 
   <ion-grid class="comments">
     <ion-row class="ion-justify-content-around">
-      <ion-card class="daily comment" style="background: linear-gradient(#52105c88, #52105c88),
-      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fgunluk.png?alt=media&token=69e5ae06-fa23-480b-903d-94d6ddb5ab93)" (click)="commentViewModal()">
+      <ion-card (click)="getAdminComment('daily', 'commentDay')" class="daily comment" style="background: linear-gradient(#52105c88, #52105c88),
+      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fgunluk.png?alt=media&token=69e5ae06-fa23-480b-903d-94d6ddb5ab93)">
         <ion-col> Günlük Burç Yorumu </ion-col>
       </ion-card>
-      <ion-card class="weekly comment" style="background: linear-gradient(#52105c88, #52105c88),
-      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fweekly.png?alt=media&token=f9650b49-ab9c-4229-a873-8b850dc691a7)" (click)="commentViewModal()">
+      <ion-card (click)="getAdminComment('weekly', 'commentWeek')" class="weekly comment" style="background: linear-gradient(#52105c88, #52105c88),
+      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fweekly.png?alt=media&token=f9650b49-ab9c-4229-a873-8b850dc691a7)">
         <ion-col> Haftalık Burç Yorumu </ion-col>
       </ion-card>
     </ion-row>
     <ion-row class="ion-justify-content-around">
-      <ion-card class="monthly comment" style="background: linear-gradient(#52105c88, #52105c88),
-      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fmonthly.png?alt=media&token=51d85237-e102-4d7f-ad82-e6a4d62a0920)" (click)="commentViewModal()">
+      <ion-card (click)="getAdminComment('monthly', 'commentMonth')" class="monthly comment" style="background: linear-gradient(#52105c88, #52105c88),
+      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fmonthly.png?alt=media&token=51d85237-e102-4d7f-ad82-e6a4d62a0920)">
         <ion-col> Aylık Burç Yorumu </ion-col>
       </ion-card>
-      <ion-card class="yearly comment" style="background: linear-gradient(#52105c88, #52105c88),
-      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fyearly.png?alt=media&token=3e3c52e4-ad4d-41b8-b767-05c64e3c16e6)" (click)="commentViewModal()">
+      <ion-card (click)="getAdminComment('yearly' , 'commentYear')" class="yearly comment" style="background: linear-gradient(#52105c88, #52105c88),
+      url(https://firebasestorage.googleapis.com/v0/b/burcger-90213.appspot.com/o/homePic%2Fyearly.png?alt=media&token=3e3c52e4-ad4d-41b8-b767-05c64e3c16e6)">
         <ion-col> Yıllık Burç Yorumu </ion-col>
       </ion-card>
     </ion-row>

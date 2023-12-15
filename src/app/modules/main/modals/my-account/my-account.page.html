@@ -5,10 +5,10 @@
       button
       (click)="modalDismiss(true)"
       slot="start"
-      ><i class="fa-solid fa-xmark"></i
+      ><i class="fa-solid fa-lg fa-xmark"></i
     ></ion-item>
-    <ion-item class="toolbar-icon" button slot="end"
-      ><i class="fa-solid fa-bell"></i
+    <ion-item (click)="navigateToPage('/main/notification')" class="toolbar-icon" button slot="end"
+      ><i class="fa-solid fa-lg fa-bell"></i
     ></ion-item>
   </ion-toolbar>
 </ion-header>
@@ -44,8 +44,16 @@
     </ion-item>
   </div>
 
-  <ng-container *ngFor="let button of buttons">
+  <ng-container *ngFor="let button of pageButtons">
     <div button class="burcger-button" (click)="navigateToPage(button.route)">
+      <ion-item detail class="menuBtn">
+        <i class="notification-icon {{ button.icon }}"></i>
+        {{ button.text }}
+      </ion-item>
+    </div>
+  </ng-container>
+  <ng-container *ngFor="let button of modalButtons">
+    <div button class="burcger-button" (click)="tokenModal(user.coin, button.modal)">
       <ion-item detail class="menuBtn">
         <i class="notification-icon {{ button.icon }}"></i>
         {{ button.text }}
