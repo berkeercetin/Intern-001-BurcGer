@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core'
-import { Firestore, collection, collectionData, query, getDocs } from '@angular/fire/firestore'
-import { Observable } from 'rxjs'
+import { Component, OnInit } from '@angular/core'
+import { UserService } from '../../services/user.service'
+import { LoadingController } from '@ionic/angular'
 
 @Component({
   selector: 'app-app-feedback',
@@ -8,24 +8,42 @@ import { Observable } from 'rxjs'
   styleUrls: ['./app-feedback.page.scss']
 })
 export class AppFeedbackPage implements OnInit {
-  private readonly firestore: Firestore = inject(Firestore)
-  feedbacks: any[] = []
-  feedback$: Observable<[]>
-  constructor () {
-    const feedbacksCollection = collection(this.firestore, 'feedback')
-    this.feedback$ = collectionData(feedbacksCollection) as Observable<[]>
-    const commentFeedbackQuery = query(feedbacksCollection) as any
+  feedbacks: any
+  user: any
 
-    getDocs(commentFeedbackQuery)
-      .then(
-        res => {
-          console.log(res.docs.map(doc => doc.data()))
-          this.feedbacks = res.docs.map(doc => doc.data())
-        }
-      )
-      .catch((err: any) => {
-        console.error(err)
-      })
+  constructor (private readonly userService: UserService,
+    private readonly loadingController: LoadingController
+  ) {
+  }
+
+  ionViewWillEnter () {
+    this.loadingController.create(
+      {
+        message: 'Yükleniyor...',
+        spinner: 'crescent',
+        animated: true
+      }
+    ).then(res => {
+      res.present()
+      this.getFeedbacks()
+        .finally(() => {
+          this.loadingController.dismiss()
+        })
+    })
+  }
+
+  async getFeedbacks () {
+    await this.userService.getFeedbacks().then(res => {
+      console.log(res.docs.map(doc => doc.data()))
+      this.feedbacks = res.docs.map(doc => doc.data())
+    })
+  }
+
+  getCustomUser (uid: string) {
+    this.userService.getUserById(uid).then(res => {
+      this.user = res.docs.map(doc => doc.data())
+      console.log(this.user = res.docs.map(doc => doc.data()))
+    })
   }
 
   ngOnInit () {

@@ -78,6 +78,11 @@ const routes: Routes = [
       {
         path: 'notification',
         loadChildren: () => import('./pages/notification/notification.module').then( m => m.NotificationPageModule)
+},{
+        path: 'zodiac-information',
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToHome },
+        loadChildren: () => import('./pages/zodiac-information/zodiac-information.module').then( m => m.ZodiacInformationPageModule)
       }
 
     ]
@@ -113,6 +118,7 @@ const routes: Routes = [
     path: 'premium',
     loadChildren: () => import('./modals/premium/premium.module').then( m => m.PremiumPageModule)
   },
+
 
 ]
 

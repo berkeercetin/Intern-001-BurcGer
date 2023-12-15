@@ -12,6 +12,10 @@ export class AddCommentPage implements OnInit {
 
   constructor () { }
 
+  // burcSecildi () {
+  //   console.log('Seçilen Burç:', this.selectedZodiac)
+  // }
+
   addData (addComment: any) {
     const collectionInstance = collection(this.firestore, 'zodiac-comment')
     addDoc(collectionInstance, addComment.value)
