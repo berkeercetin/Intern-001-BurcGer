@@ -1,7 +1,29 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button (click)="modalDismiss(false)" default-href="/main/home"></ion-back-button>
-    </ion-buttons>
+<ion-header style="box-shadow: none" [translucent]="true">
+  <ion-toolbar color="transparent" class="commentView-toolbar">
+    <ion-buttons><ion-item
+      class="toolbar-icon"
+      button
+      (click)="modalDismiss(true)"
+      slot="start"
+      ><i class="fa-solid fa-lg fa-xmark"></i
+    ></ion-item>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-button (click)="presentPopover($event)"
+      ><i class="fa-solid fa-xl fa-ellipsis"></i
+    ></ion-button>
+    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+      <ng-template>
+        <ion-button style="color: var(--burcger-primary-purple);padding: 0px;width: 98%;" fill="clear" class="report"><i class="fa-solid fa-triangle-exclamation"></i> Şikayet Et</ion-button>
+      </ng-template>
+    </ion-popover>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content class="commentView-content" [fullscreen]="true">
+  <ion-grid class="commentView-grid">
+    <ion-title>{{burcTitle}}</ion-title>
+    
+  </ion-grid>
+</ion-content>

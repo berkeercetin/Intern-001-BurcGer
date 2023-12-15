@@ -3,6 +3,7 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router'
 import { UserService } from '../../services/user.service'
 import { ModalController } from '@ionic/angular'
 import { AuthService } from '../../services/auth.service'
+import { TokensPage } from '../tokens/tokens.page'
 
 @Component({
   selector: 'app-my-account',
@@ -11,11 +12,16 @@ import { AuthService } from '../../services/auth.service'
 })
 export class MyAccountPage implements OnInit {
   user!: any
-  buttons = [
+  pageButtons = [
     { icon: 'fa-regular fa-user', text: 'Hesabım', route: '/main/profile-information' },
     { icon: 'fa-regular fa-gem', text: 'Premium', route: '' },
     { icon: 'fa-solid fa-coins', text: 'Jeton', route: '' },
     { icon: 'fa-solid fa-gear', text: 'Ayarlar', route: '' }
+  ]
+
+  modalButtons = [
+    { icon: 'fa-solid fa-coins', text: 'Paylaş Kazan', modal: 'TokensPage' },
+    
   ]
 
   constructor (private readonly router: Router, private readonly userService: UserService, private readonly modalController: ModalController, private readonly authService: AuthService) {
@@ -58,7 +64,18 @@ export class MyAccountPage implements OnInit {
     this.router.navigateByUrl(page)
       .then((res) => { console.log(res) })
       .catch(err => { console.log(err) })
-    this.modalDismiss(true)
+    this.modalDismiss(false)
+  }
+
+  async tokenModal(coin: number, page:any) {
+    const modal = await this.modalController.create({
+      component: page,
+      componentProps: {
+        token: coin,
+      },
+    });
+
+    return await modal.present();
   }
 
   async modalDismiss (save: boolean) {
@@ -70,5 +87,8 @@ export class MyAccountPage implements OnInit {
       .catch((err) => {
         console.log(err)
       })
+      if(save){
+        this.navigateToPage('main/home')
+      }
   }
 }

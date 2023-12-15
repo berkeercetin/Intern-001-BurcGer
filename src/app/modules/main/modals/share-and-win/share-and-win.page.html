@@ -1,0 +1,62 @@
+<ion-header style="box-shadow: none" [translucent]="true">
+  <ion-toolbar color="transparent" class="saw-toolbar">
+    <ion-item
+      class="toolbar-icon"
+      button
+      (click)="modalDismiss(true)"
+      slot="start"
+      ><i class="fa-solid fa-lg fa-xmark"></i
+    ></ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="saw-grid">
+    <ion-row class="title-refno">
+      <ion-title>Referans numaran;</ion-title>
+      <div
+        button
+        id="copied"
+        class="burcger-button"
+        (click)="copyToClipboard('Text to copy')"
+      >
+        <div class="menuBtn">
+          #1234567
+          <i class="notification-icon fa-solid fa-copy"></i>
+        </div>
+      </div>
+      <ion-popover trigger="copied" side="top" alignment="center" size="auto">
+        <ng-template>
+          <ion-content
+            style="
+              align-items: center;
+              --padding-bottom: 10px;
+              --padding-top: 10px;
+              border: 2px solid var(--burcger-primary-purple);
+              border-radius: 4px;
+            "
+            >{{popoverText}}</ion-content
+          >
+        </ng-template>
+      </ion-popover>
+    </ion-row>
+    <ion-row class="brand-apps">
+      <i class="fa-brands fa-2xl fa-facebook"></i>
+      <i class="fa-brands fa-2xl fa-instagram"></i>
+      <i class="fa-brands fa-2xl fa-whatsapp"></i>
+      <i class="fa-solid fa-2xl fa-share-nodes"></i>
+    </ion-row>
+    <ion-row class="title-refno">
+      <ion-title style="text-align: center"
+        >Referans Numaranı <br />
+        Arkadaşlarınla Paylaş <br />
+        <ion-title style="color: darkorange">XXX</ion-title> Jeton
+        Kazan!!</ion-title
+      >
+      <ion-button class="buton" color="#281A28">
+        <ion-label>Kazanılan Jeton 000000</ion-label>
+        <i class="fa-solid fa-coins"></i>
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

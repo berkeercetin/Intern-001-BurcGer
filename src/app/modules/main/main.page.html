@@ -1,13 +1,13 @@
 <ion-header class="app-header" *ngIf="showHead && user">
   <ion-toolbar class="header-toolbar" color="var(--burcger-primary-orange)">
     <ion-buttons slot="start" class="coin-button">
-      <ion-button class="coins"
+      <ion-button class="coins" (click)="tokenModal()"
         ><i class="coin-icon fa-solid fa-heart"></i>{{user.coin}}</ion-button
       >
     </ion-buttons>
-    <ion-title class="app-title ion-text-center">BurcGer</ion-title>
+    <ion-title (click)="navigateToPage('main/home')" class="app-title ion-text-center">BurcGer</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="presentModal()"
+      <ion-button (click)="myAccountmodal()"
         ><div class="user">
           <div class="user-profile">
             <img         
@@ -36,7 +36,7 @@
     <ion-tab-button tab="explore">
       <i class="fa-solid fa-globe fa-xl"></i>
     </ion-tab-button>
-    <ion-tab-button (click)="presentModal()">
+    <ion-tab-button (click)="myAccountmodal()">
       <i class="fa-solid fa-user fa-xl"></i>
     </ion-tab-button>
   </ion-tab-bar>

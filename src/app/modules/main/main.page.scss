@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Akronim&display=swap');
 ion-header.app-header {
     background-color: var(--ion-background-color);
     box-shadow: none;
@@ -8,7 +9,7 @@ ion-header.app-header {
       color: var(--burcger-primary-orange);
   
       .app-title {
-        font-size: 24px;
+        font-size: 30px;
         font-family: Akronim;
       }
       .user {

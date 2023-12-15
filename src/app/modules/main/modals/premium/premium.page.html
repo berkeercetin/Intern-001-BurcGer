@@ -1,0 +1,79 @@
+<ion-header style="box-shadow: none" [translucent]="true">
+  <ion-toolbar color="transparent" class="premium-toolbar">
+    <ion-item
+      class="toolbar-icon"
+      button
+      (click)="modalDismiss(true)"
+      slot="start"
+      ><i class="fa-solid fa-lg fa-xmark"></i
+    ></ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="premium-content" [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <pre class="welcome-text">
+    Premium
+        Dünyasına
+            Hoş Geldin!
+</pre
+      >
+    </ion-row>
+
+    <ion-row *ngIf="!isPremium" class="get-premium-buttons">
+      <ion-text
+        >Birbirinden ayrıcalıklı deneyimler için şimdi PREMIUM ol!</ion-text
+      >
+
+      <ng-container *ngFor="let button of premium ; let i=index ">
+        <div button (click)="buttonSelected(i)" class="burcger-button">
+          <ion-item
+            [class]="isButtonSelected[i] ? 'selected-button' : 'menuBtn'"
+          >
+            <ion-label *ngIf="button.value2; else noValue2">
+              <span>{{ button.value2 }} ₺ </span>
+              <span class="overline">{{ button.value }} ₺</span>
+            </ion-label>
+
+            <ng-template #noValue2>
+              <ion-label>{{ button.value }} ₺</ion-label>
+            </ng-template>
+            <ion-label slot="end">{{ button.text }}</ion-label>
+          </ion-item>
+          <i
+            [class]="isButtonSelected[i] ? 'fa-solid fa-lg fa-circle-check' : ' ' "
+          ></i>
+        </div>
+      </ng-container>
+    </ion-row>
+    <ion-fab horizontal="center" *ngIf="isButtonSelected.includes(true)">
+      <ion-fab-button>
+        <i class="fa-solid fa-xl fa-arrow-right"></i>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-grid>
+
+  <ion-grid class="premiumTrue" *ngIf="isPremium">
+    <div class="burcger-box">
+      <ion-item class="burcger-box-content ion-text-center">
+        <div slot="start" class="box-info">
+          <ion-title>Plan</ion-title>
+          <p>Yıllık Plan</p>
+        </div>
+        <div slot="end" class="chance">
+          Planı Değiştir<i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </ion-item>
+    </div>
+    <ion-text class="premium-cancel"
+      >PREMIUM üyeliğini
+      <p>iptal et.</p></ion-text
+    >
+    <ion-text class="warning-text"
+      >Premium üyelik iptallerinde para iadesi <p>YAPILMAMAKTADIR.</p> <br />
+      Plan değişiklikleri sonraki faturalandırma gününden itibaren
+      geçerlidir.</ion-text
+    >
+  </ion-grid>
+</ion-content>
