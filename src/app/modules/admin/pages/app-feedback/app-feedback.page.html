@@ -13,45 +13,34 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-card class="feedbackCard" *ngFor="let appFeedback of feedbacks">
+  <ion-card class="feedbackCard" *ngFor="let feedback of feedbacks">
     <ion-accordion-group>
       <ion-accordion value="first" class="background">
 
         <ion-item slot="header" class="background">
-          <ion-label>{{ appFeedback.feedbackTitle }}</ion-label>
+          <ion-label>{{ feedback.feedbackTitle }}</ion-label>
         </ion-item>
 
         <div class="ion-padding" slot="content">
 
           <ion-card-content>
-            {{ appFeedback.feedback }}
+            {{ feedback.feedbackContent }}
           </ion-card-content>
 
           <hr class="contentLine">
 
           <ion-card-subtitle class="subtitle">
-            {{ appFeedback.feedbackDate }}
+            {{ feedback.feedbackDate }}
           </ion-card-subtitle>
 
           <hr class="contentLine">
 
-          <ion-card-subtitle class="subtitle">
-            {{ appFeedback.user }}
+            <ion-card-subtitle class="subtitle">
+            {{ feedback.name }}
           </ion-card-subtitle>
           
         </div>
       </ion-accordion>
     </ion-accordion-group>
-    <!-- <ion-card-header>
-      <ion-card-title>{{ appFeedback.title }}</ion-card-title>
-      <ion-card-subtitle>{{ appFeedback.commentType }}</ion-card-subtitle>
-    </ion-card-header> -->
-
-    <!-- <ion-card-content>
-      {{ appFeedback.comment }} 
-    </ion-card-content>
-    <ion-card-content>
-      {{ appFeedback.feedbackDate }} 
-    </ion-card-content> -->
   </ion-card>
 </ion-content>
