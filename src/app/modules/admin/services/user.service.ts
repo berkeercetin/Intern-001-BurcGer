@@ -7,7 +7,6 @@ import { UserModel } from '../../main/models/usermodel'
 })
 export class UserService {
   private readonly firestore: Firestore = inject(Firestore)
-  feedback: any
   constructor () { }
 
   async getUsers () {
@@ -32,7 +31,7 @@ export class UserService {
 
   async getUserById (uid: string) {
     const uidCollection = collection(this.firestore, 'user')
-    const uidQuery = query(uidCollection, where('uid', '==', uid)) as any
+    const uidQuery = query(uidCollection, where(uid, '==', uid)) as any
     return await getDocs(uidQuery)
   }
 }

@@ -9,7 +9,7 @@ import { LoadingController } from '@ionic/angular'
 })
 export class AppFeedbackPage implements OnInit {
   feedbacks: any
-  userInfo: any
+  user: any
 
   constructor (private readonly userService: UserService,
     private readonly loadingController: LoadingController
@@ -41,7 +41,8 @@ export class AppFeedbackPage implements OnInit {
 
   getCustomUser (uid: string) {
     this.userService.getUserById(uid).then(res => {
-      this.userInfo = res.docs.map(doc => doc.data())
+      this.user = res.docs.map(doc => doc.data())
+      console.log(this.user = res.docs.map(doc => doc.data()))
     })
   }
 
