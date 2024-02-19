@@ -16,14 +16,15 @@
 <h3 align="center">User and Creator Comments Page</h3>
 <p align="center" style="max-heigh:250px"><img src="./assets/comments.png"></p>
 
-<h3 align="center">Creators Page</h3>
+<h3 align="center">Explore Page</h3>
 <p align="center" style="max-heigh:250px"><img src="./assets/creators.png"></p>
 
 <h3 align="center">Admin Panel</h3>
 <p align="center" style="max-heigh:250px"><img src="./assets/adminpanel.png"></p>
 
 <h3 align="center">And More...</h3>
-<p align="center" style="max-heigh:250px"><img src="./assets/more.png"></p>
+<p align="center" style="max-heigh:250px"><img src="./assets/coins.png"></p>
+<p align="center" style="max-heigh:250px"><img src="./assets/premium.png"></p>
 
 <table align="center">
   <tr>
