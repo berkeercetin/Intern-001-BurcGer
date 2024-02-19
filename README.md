@@ -22,26 +22,26 @@
 <h3 align="center">And More...</h3>
 <p align="center" style="max-heigh:250px"><img src="./assets/navbar.gif"></p>
 
-<table>
+<table align="center">
   <tr>
-    <th>Column 1 Header</th>
-    <th>Column 2 Header</th>
+    <td valing="center" width="70%">The part where it is located and the work it does.</td>
+    <td valing="center" width="30%">The person who did it.</td>
   </tr>
   <tr>
-    <td>Row 1, Col 1</td>
-    <td>Row 1, Col 2</td>
+    <td>Login, Register and Profile pages (Auth and User data secure)</td>
+    <td>BIG RED BUTTON</td>
   </tr>
   <tr>
-    <td>Row 2, Col 1</td>
-    <td>Row 2, Col 2</td>
+    <td>User/Creator interface pages(Home, Comments...)</td>
+    <td>Hakanbaban53</td>
   </tr>
   <tr>
-    <td>Row 3, Col 1</td>
-    <td>Row 3, Col 2</td>
+    <td>Admin panel(Add comment, Edit User's varible ...)</td>
+    <td>Village Boy</td>
   </tr>
   <tr>
-    <td>Row 4, Col 1</td>
-    <td>Row 4, Col 2</td>
+    <td>Project Manager(Create the project, Review the Pull Request ...)</td>
+    <td>Mr. Lonely</td>
   </tr>
 </table>
 
