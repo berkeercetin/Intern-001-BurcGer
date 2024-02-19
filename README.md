@@ -1,11 +1,10 @@
 <div align="center">
-
-  # [BurçGer ۞](https://github.com/)
-  **A cross-platform mobile application written in Angular and Ionic for zodiac and zodiac interpretations.**
+  <h1><a href="https://github.com/">BurçGer ۞</a></h1>
+  <p><strong>A cross-platform mobile application written in Angular and Ionic for zodiac and zodiac interpretations.</strong></p>
 </div>
 
 <h2 align="center">BurçGer</h2>
-<p align="center"><img src="./assets/preview.png"></p>
+<p align="center"><img src="./assets/preview.png" alt="BurçGer Preview"></p>
 
 <h3 align="center">Login and User Profile page</h3>
 <div align="center">
@@ -30,15 +29,14 @@
   <img src="./assets/premium.png" style="max-width: 250px;">
 </div>
 
-
-
 <div align="center">
-  ## People who contributed to its construction ❤️
+  <h2>People who contributed to its construction ❤️</h2>
 </div>
+
 <table align="center">
   <tr>
-    <td valing="center" width="70%">The part where it is located and the work it does.</td>
-    <td valing="center" width="30%">The person who did it.</td>
+    <td valign="center" width="70%">The part where it is located and the work it does.</td>
+    <td valign="center" width="30%">The person who did it.</td>
   </tr>
   <tr>
     <td>Login, Register and Profile pages (Auth and User data secure)</td>
