@@ -16,6 +16,9 @@
 <h3 align="center">User and Creator Comments Page</h3>
 <p align="center" style="max-heigh:250px"><img src="./assets/comments.png"></p>
 
+<h3 align="center">Creators Page</h3>
+<p align="center" style="max-heigh:250px"><img src="./assets/creator.png"></p>
+
 <h3 align="center">Admin Panel</h3>
 <p align="center" style="max-heigh:250px"><img src="./assets/adminpanel.png"></p>
 
