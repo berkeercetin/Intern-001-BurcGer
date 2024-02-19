@@ -7,25 +7,34 @@
 <h2 align="center">BurçGer</h2>
 <p align="center"><img src="./assets/preview.png"></p>
 
-<h3 align="center">Login page</h3>
-<p align="center"><img src="./assets/loginpage.png"></p>
+<h3 align="center">Login and User Profile page</h3>
+<div align="center">
+  <img src="./assets/loginpage.png" style="max-width: 250px;">
+  <img src="./assets/myaccount.png" style="max-width: 250px;">
+</div>
 
-<h3 align="center">My Account Page</h3>
-<p align="center"><img src="./assets/myaccount.png"></p>
-
-<h3 align="center">User and Creator Comments Page</h3>
-<p align="center" style="max-heigh:250px"><img src="./assets/comments.png"></p>
-
-<h3 align="center">Explore Page</h3>
-<p align="center" style="max-heigh:250px"><img src="./assets/creators.png"></p>
+<h3 align="center">Comments and Explore Page</h3>
+<div align="center">
+  <img src="./assets/comments.png" style="max-width: 250px;">
+  <img src="./assets/creators.png" style="max-width: 250px;">
+</div>
 
 <h3 align="center">Admin Panel</h3>
-<p align="center" style="max-heigh:250px"><img src="./assets/adminpanel.png"></p>
+<div align="center">
+  <img src="./assets/adminpanel.png" style="max-width: 250px;">
+</div>
 
 <h3 align="center">And More...</h3>
-<p align="center" style="max-heigh:250px"><img src="./assets/coins.png"></p>
-<p align="center" style="max-heigh:250px"><img src="./assets/premium.png"></p>
+<div align="center">
+  <img src="./assets/coins.png" style="max-width: 250px;">
+  <img src="./assets/premium.png" style="max-width: 250px;">
+</div>
 
+
+
+<div align="center">
+  ## People who contributed to its construction ❤️
+</div>
 <table align="center">
   <tr>
     <td valing="center" width="70%">The part where it is located and the work it does.</td>
