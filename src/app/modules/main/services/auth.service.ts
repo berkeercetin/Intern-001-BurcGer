@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core'
 import {
   Auth,
   createUserWithEmailAndPassword,
@@ -6,55 +6,82 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   User,
-  UserCredential
-} from '@angular/fire/auth';
-import { doc, Firestore, setDoc } from '@angular/fire/firestore';
+  UserCredential,
+  applyActionCode
+} from '@angular/fire/auth'
+import { addDoc, collection, doc, Firestore, setDoc, updateDoc } from '@angular/fire/firestore'
+import { UserModel } from '../models/usermodel'
+import { GlobalService } from 'src/app/shared/global.service'
+import { ZodiacModel } from '../models/zodiac.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _firestore = inject(Firestore);
-  private _auth = inject(Auth);
+  private readonly _firestore = inject(Firestore)
+  private readonly _auth = inject(Auth)
+  public globalService: GlobalService = new GlobalService()
 
-  signup(email: string, password: string, data: any): Promise<UserCredential | User> {
-    return createUserWithEmailAndPassword(
+  async signup(email: string, password: string, data: any): Promise<UserCredential | User> {
+    return await createUserWithEmailAndPassword(
       this._auth,
       email.trim(),
       password.trim()
-    ).then((auth) => this._setUserData(auth, data));
+    ).then(async auth => { 
+      await sendEmailVerification( auth.user)
+      return await this._setUserData(auth, { ...data })
+    })
+   
   }
 
-  login(email: string, password: string): Promise<UserCredential> {
-    console.log(email.trim(),password.trim())
-    return signInWithEmailAndPassword(
-        this._auth,
-        email.trim(),
-        password.trim()
-      );
-    }
-
-  private _setUserData(auth: UserCredential, data: any): Promise<any> {
-    const user = {
-      uid: auth.user.uid,
-      name: (auth.user.displayName || auth.user.email)!,
-      email: auth.user.email!,
-      surname: data.surname,
-      birthPlace: data.birthPlace,
-      birthTime: data.birthTime,
-      gender: data.gender,
-      relation: data.relation,
-      job: data.job,
-
-    };
-    const userDocRef = doc(this._firestore, `user/${user.uid}`);
-    return setDoc(userDocRef, user).then(() => user);
+  async login(email: string, password: string): Promise<UserCredential> {
+    console.log(email.trim(), password.trim())
+    return await signInWithEmailAndPassword(
+      this._auth,
+      email.trim(),
+      password.trim()
+    )
   }
 
-  resetPassword(email: string){
-    return sendPasswordResetEmail(this._auth, email)
+  async resend(){
+    return await sendEmailVerification( this.globalService.data.user)
   }
 
- 
-  constructor() { }
+
+
+  private async _setUserData(auth: UserCredential, user: UserModel): Promise<any> {
+    const userDocRef = doc(this._firestore, `user/${auth.user.uid}`)
+    console.log('sonVeri ' + user)
+    user.uid = auth.user.uid
+    return await setDoc(userDocRef, user).then(() => user)
+  }
+
+  async resetPassword(email: string) {
+    await sendPasswordResetEmail(this._auth, email)
+  }
+
+  getUserUid() {
+    return this._auth.currentUser?.uid
+  }
+
+  signOut() {
+    return this._auth.signOut()
+  }
+
+  async verifiedEmail(code: string){
+    return await applyActionCode(this._auth, code)
+  }
+
+
+
+  constructor(public firestore: Firestore) { }
+
+  async addZodiacInformation(zodiacs: ZodiacModel[], myUser: UserModel): Promise<any> {
+    let user = this.globalService.data.user
+
+    const userDocRef = doc(this._firestore,'/user/'+ user.uid )
+    console.log('sonVeri ' + myUser)
+    return await updateDoc(userDocRef, {...myUser}).then(() => myUser)
+  }
+  
 }

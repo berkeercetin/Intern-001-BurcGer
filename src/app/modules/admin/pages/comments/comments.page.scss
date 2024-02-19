@@ -1,0 +1,14 @@
+.header {
+    margin: 10px auto;
+    background-color: none;
+  
+    .title {
+      font-size: 24px;
+      justify-content: center;
+      font-family: Inter;
+    }
+  }
+  .backgroundNone {
+    --background: none;
+    background: none !important;
+  }

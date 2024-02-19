@@ -1,0 +1,108 @@
+<ion-content>
+  <ion-title class="title">Burç Bilgileri</ion-title>
+  <ion-label class="subtitle">Hesapladığınız doğum haritasını
+    aşağıya giriniz.</ion-label>
+  <form [formGroup]='zodiacForm'>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="sun" interface="action-sheet" placeholder="Güneş Burcu">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="moon" interface="action-sheet" placeholder="Ay Burcu">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home12" interface="action-sheet" placeholder="12. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home2" interface="action-sheet" placeholder="2. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home3" interface="action-sheet" placeholder="3. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home4" interface="action-sheet" placeholder="4. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home5" interface="action-sheet" placeholder="5. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home6" interface="action-sheet" placeholder="6. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home7" interface="action-sheet" placeholder="7. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home8" interface="action-sheet" placeholder="8. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home9" interface="action-sheet" placeholder="9. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home10" interface="action-sheet" placeholder="10. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home11" interface="action-sheet" placeholder="11. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="selectList">
+      <ion-item class="selectBox">
+        <ion-select formControlName="home12" interface="action-sheet" placeholder="12. Ev">
+          <ion-select-option *ngFor="let element of array" value="{{element.name}}">{{element.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+  <ion-button class="buton" color="#281A28" (click)="addZodiacInformation()">
+    <ion-label>Yorumla</ion-label>
+  </ion-button>
+</ion-content>

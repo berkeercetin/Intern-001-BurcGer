@@ -1,0 +1,33 @@
+<ion-content *ngIf="creators" class="app-creators" [fullscreen]="true">
+  <ng-container *ngFor="let creator of creators">
+    <ion-card class="creators-card">
+      <ion-card-content class="creators">
+        <div class="user-img">
+          <ion-thumbnail>
+            <img
+              class="user-profile-image"
+              alt="User profile photo"
+              [src]="creator.photoUrl || 'https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg' "
+            />
+          </ion-thumbnail>
+          <ion-label class="comment-star"
+            ><i class="fa-solid fa-star"></i> 4.5
+          </ion-label>
+        </div>
+        <div class="user-all-info">
+          <ion-item button detail (click)="presentModal(creator.uid)" class="user-name"
+            >{{creator.name}} {{creator.surname}}</ion-item
+          >
+          <ion-item class="item-info">
+            <p class="info">
+              Kendini açıklama.... Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit 🤔. Morbi convallis sit amet est quis condimentum.
+              Pellentesque vehicula
+            </p>
+          </ion-item>
+          <ion-item button detail class="price-btn"> 21 ₺ </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>

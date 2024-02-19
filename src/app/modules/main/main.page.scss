@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Akronim&display=swap');
+ion-header.app-header {
+    background-color: var(--ion-background-color);
+    box-shadow: none;
+    border-bottom: 1px solid var(--burcger-primary-orange);
+  
+    .header-toolbar {
+      --min-height: 36px;
+      color: var(--burcger-primary-orange);
+  
+      .app-title {
+        font-size: 30px;
+        font-family: Akronim;
+      }
+      .user {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+  
+        .user-profile {
+          width: 24px;
+          height: 24px;
+          display: flex;
+          border-radius: 100%;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+  
+          &:before {
+            padding: 4px;
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            border-radius: 100%; /* !importanté */
+            background: var(--burcger-linear-color);
+          }
+  
+          .user-profile-photo {
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+          }
+        }
+        .premium-icon {
+          display: flex;
+          position: absolute;
+          color: var(--burcger-primary-orange);
+          bottom: 0;
+          right: 64%;
+        }
+        .creator-icon {
+          display: flex;
+          position: absolute;
+          color: var(--burcger-primary-orange);
+          bottom: 0;
+          left: 70%;
+        }
+      }
+    }
+  }
+  
+  ion-tab-bar {
+    border: none;
+    max-height: 36px;
+    border-radius: 20px 20px 0px 0px;
+    --color-selected: var(--burcger-primary-orange);
+  }

@@ -1,0 +1,64 @@
+<ion-content class="app-write-comment">
+  <ng-container *ngFor="let comment of comments; let i=index">
+    <ion-card class="write-comment">
+      <ion-card-header>
+        <ion-card-title class="card-title"
+          ><ion-title class="comment-star"
+            ><i class="fa-solid fa-star"></i>4.5</ion-title
+          ><ion-title class="comment-date"
+            >Yorum Tarihi :{{comment.commentWriteDate}}</ion-title
+          ></ion-card-title
+        >
+      </ion-card-header>
+
+      <ion-card-content class="zodiac-comment">
+        {{comment.commentText}}
+      </ion-card-content>
+
+      <ion-buttons class="comments-buttons">
+        <ion-button fill="clear"><i class="fa-solid fa-pen"></i></ion-button>
+        <ion-button fill="clear"><i class="fa-solid fa-eye"></i></ion-button>
+        <ion-button fill="clear" (click)="toggleDropdown(i)">
+          <i
+            [class]="isDropdownOpen[i] ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"
+          ></i></ion-button
+      ></ion-buttons>
+
+      <ion-list class="dropdown-list" *ngIf="isDropdownOpen[i]">
+        <ion-item class="item-info">
+          <div>
+            <p class="info">Burç Türü: {{comment.commentType}}</p>
+            <p class="info">İstek Tarihi: 09/20/2023</p>
+          </div>
+        </ion-item>
+        <ion-item-sliding class="asd" (click)="toggleDropdown2(i)">
+          <ion-item class="comment-info">
+            <ion-label class="info"> Berke ERÇETİN </ion-label>
+            <i
+              [class]="isDropdownOpen2[i] ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'"
+            ></i>
+          </ion-item>
+          <ion-list class="list-info" *ngIf="isDropdownOpen2[i]">
+            <ion-item-sliding class="user-date">
+              <div class="user-info">
+                <i class="fa-solid fa-calendar"></i>
+                <ion-label class="info"> Doğum tarihi: 10/21/2002 </ion-label>
+              </div>
+              <div class="user-info">
+                <i class="fa-solid fa-star"></i>
+                <ion-label class="info">
+                  Kullanıcı Burcu:
+                  <p class="zodiac">İkizler</p></ion-label
+                >
+              </div>
+              <div class="user-info">
+                <i class="fa-solid fa-clock"></i>
+                <ion-label class="info"> Doğum saati: 14:36 </ion-label>
+              </div>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card>
+  </ng-container>
+</ion-content>

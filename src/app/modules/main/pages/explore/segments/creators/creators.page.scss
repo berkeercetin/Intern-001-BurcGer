@@ -1,0 +1,66 @@
+.app-creators {
+    --padding-top: 90px;
+  
+    .creators-card {
+      padding: 4px;
+      border-radius: 4px;
+  
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: var(--burcger-linear-color);
+      }
+  
+      .creators {
+        display: flex;
+        flex-direction: row;
+        background-color: var(--burcger-background-color);
+  
+        .user-img {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          .user-profile-image {
+            border-radius: 100%;
+          }
+  
+          .comment-star {
+            color: var(--burcger-primary-orange);
+          }
+        }
+  
+        .user-all-info {
+          color: white;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          align-items: flex-end;
+          .user-name {
+            --min-height: 0px;
+            --background: var(--burcger-background-color);
+            --border-style: none;
+            font-size: 14px;
+          }
+          .item-info {
+            --border-color: transparent;
+            --background: var(--burcger-background-color);
+            .info {
+              font-size: 10px;
+            }
+          }
+          .price-btn {
+            --min-height: 0px;
+            --background: var(--burcger-background-color);
+            --border-style: none;
+            font-size: 14px;
+            color: var(--burcger-primary-purple);
+          }
+        }
+      }
+    }
+  }

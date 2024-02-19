@@ -1,0 +1,37 @@
+.header {
+    align-items: center;
+    .title {
+      font-size: 16px;
+      font-family: Inter;
+      text-align: center;
+      justify-content: center;
+    }
+    .btnFilter{
+      font-size: 24px;
+      margin-right: 16px;
+    }
+  }
+
+  .background {
+    background: #090A25;
+    --background: #090A25 !important;
+  }
+
+ .feedbackCard{
+  color: #ffffff;
+  --background: none;
+   border-radius: 4px;
+   border: 2px solid #FD7E14;
+   border-image: linear-gradient(to right,#FD7E14, #9747FF) 1;
+
+   .subtitle{
+     color: #FFFFFF;
+     text-align: center;
+   }
+ }
+
+ .contentLine{
+  height: 1px;
+  border-radius: 8px;
+  background-color: #9747FF;
+ }

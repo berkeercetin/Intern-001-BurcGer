@@ -1,0 +1,86 @@
+.saw-toolbar {
+  --min-height: 24px;
+
+  .toolbar-icon {
+    --background: transparent;
+    --border-style: none;
+    --min-height: 24px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }
+}
+
+.saw-grid {
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+
+  .title-refno {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  .burcger-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .menuBtn {
+      font-family: Inter;
+      font-size: 18px;
+      position: relative;
+      border-radius: 4px; /* Apply border radius */
+      padding: 8px; /* Adjust padding as needed */
+      background: white; /* Apply linear gradient */
+      color: var(--burcger-primary-orange); /* Text color */
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -2px; /* Adjust the negative top value to create a border effect */
+        right: -2px; /* Adjust the negative right value to create a border effect */
+        bottom: -2px; /* Adjust the negative bottom value to create a border effect */
+        left: -2px; /* Adjust the negative left value to create a border effect */
+        z-index: -1;
+        border-radius: 4px; /* Adjust the border radius to match the button border radius + border width */
+        background: var(--burcger-linear-color);
+      }
+      .notification-icon {
+        margin-left: 8px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .brand-apps {
+    gap: 30px;
+    display: flex;
+    min-height: 50px;
+    align-items: center;
+    font-size: 20px;
+    background: -moz-linear-gradient(#3880FF, #FD7E14, #9747FF);
+    background: -webkit-linear-gradient(#3880FF, #FD7E14, #9747FF);
+    background: linear-gradient(#3880FF, #FD7E14, #9747FF);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .buton {
+    display: flex;
+    border: 2px solid var(--burcger-primary-orange);
+    color: #fd7e14;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+    text-align: center;
+    width: min-content;
+    background: #ffffff;
+  }
+}

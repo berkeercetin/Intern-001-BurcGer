@@ -1,0 +1,46 @@
+<ion-header [translucent]="true" class="header ion-no-border">
+  <ion-toolbar class="background">
+    <ion-title class="title"> Uygulama Geri Bildirimleri </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons class="btnFilter" slot="end">
+      <ion-icon name="filter-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <hr class="contentLine" style="background-color: #FD9843;">
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-card class="feedbackCard" *ngFor="let feedback of feedbacks">
+    <ion-accordion-group>
+      <ion-accordion value="first" class="background">
+
+        <ion-item slot="header" class="background">
+          <ion-label>{{ feedback.feedbackTitle }}</ion-label>
+        </ion-item>
+
+        <div class="ion-padding" slot="content">
+
+          <ion-card-content>
+            {{ feedback.feedbackContent }}
+          </ion-card-content>
+
+          <hr class="contentLine">
+
+          <ion-card-subtitle class="subtitle">
+            {{ feedback.feedbackDate }}
+          </ion-card-subtitle>
+
+          <hr class="contentLine">
+
+            <ion-card-subtitle class="subtitle">
+            {{ feedback.uid }}
+          </ion-card-subtitle>
+          
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-card>
+</ion-content>

@@ -45,14 +45,14 @@ ion-content.app-home {
         position: absolute;
         color: var(--burcger-primary-orange);
         bottom: 0;
-        right: 54%;
+        right: 56%;
       }
       .creator-icon {
         display: flex;
         position: absolute;
         color: var(--burcger-primary-orange);
         bottom: 0;
-        left: 50%;
+        left: 52%;
       }
     }
   }
@@ -115,23 +115,6 @@ ion-content.app-home {
       height: 115px;
       display: flex;
       align-items: center;
-
-      &.daily {
-        background: linear-gradient(#52105c88, #52105c88),
-          url(/assets/gunluk.png);
-      }
-      &.weekly {
-        background: linear-gradient(#52105c88, #52105c88),
-          url(/assets/weekly.png);
-      }
-      &.yearly {
-        background: linear-gradient(#52105c88, #52105c88),
-          url(/assets/yearly.png);
-      }
-      &.monthly {
-        background: linear-gradient(#52105c88, #52105c88),
-          url(/assets/monthly.png);
-      }
     }
   }
 }
